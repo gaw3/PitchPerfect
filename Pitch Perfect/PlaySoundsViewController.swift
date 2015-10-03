@@ -28,45 +28,50 @@ class PlaySoundsViewController: UIViewController {
 		super.viewDidLoad()
 
 		audioEngine = AVAudioEngine()
-		audioFile   = AVAudioFile(forReading: receivedAudio.filePathUrl, error: nil)
-
 		audioSession = AVAudioSession.sharedInstance()
-		audioSession.setCategory(AVAudioSessionCategoryPlayback, error: nil)
+
+		do {
+			audioFile = try AVAudioFile(forReading: receivedAudio.filePathUrl)
+			try audioSession.setCategory(AVAudioSessionCategoryPlayback)
+		} catch let error as NSError {
+			print("Unable to initialize for playback; error = \(error.localizedDescription)")
+		}
+
 	}
 
 	// MARK: - IB Actions
 
 	@IBAction func playChipmunkAudio(sender: UIButton) {
-		var pitchEffect = AVAudioUnitTimePitch()
+		let pitchEffect = AVAudioUnitTimePitch()
 		pitchEffect.pitch = 1000
 		playAudioWithEffect(pitchEffect)
 	}
 
 	@IBAction func playDarthVaderAudio(sender: UIButton) {
-		var pitchEffect = AVAudioUnitTimePitch()
+		let pitchEffect = AVAudioUnitTimePitch()
 		pitchEffect.pitch = -1000
 		playAudioWithEffect(pitchEffect)
 	}
 
 	@IBAction func playEchoAudio(sender: UIButton) {
-		var echoEffect = AVAudioUnitDelay()
+		let echoEffect = AVAudioUnitDelay()
 		playAudioWithEffect(echoEffect)
 	}
 
 	@IBAction func playFastAudio(sender: UIButton) {
-		var fastEffect = AVAudioUnitVarispeed()
+		let fastEffect = AVAudioUnitVarispeed()
 		fastEffect.rate = 2.0
 		playAudioWithEffect(fastEffect)
 	}
 
 	@IBAction func playReverbAudio(sender: UIButton) {
-		var reverbEffect = AVAudioUnitReverb()
+		let reverbEffect = AVAudioUnitReverb()
 		reverbEffect.wetDryMix = 50.0
 		playAudioWithEffect(reverbEffect)
 	}
 
 	@IBAction func playSlowAudio(sender: UIButton) {
-		var slowEffect = AVAudioUnitVarispeed()
+		let slowEffect = AVAudioUnitVarispeed()
 		slowEffect.rate = 0.5
 		playAudioWithEffect(slowEffect)
 	}
@@ -81,7 +86,7 @@ class PlaySoundsViewController: UIViewController {
 		audioEngine.stop()
 		audioEngine.reset()
 
-		var audioPlayerNode = AVAudioPlayerNode()
+		let audioPlayerNode = AVAudioPlayerNode()
 		audioEngine.attachNode(audioPlayerNode)
 		audioEngine.attachNode(effect)
 
@@ -89,9 +94,14 @@ class PlaySoundsViewController: UIViewController {
 		audioEngine.connect(effect, to: audioEngine.outputNode, format: nil)
 
 		audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
-		audioEngine.startAndReturnError(nil)
 
-		audioPlayerNode.play()
+		do {
+			try audioEngine.start()
+			audioPlayerNode.play()
+		} catch let error as NSError {
+			print("Unable to start playback; error = \(error.localizedDescription)")
+		}
+
 	}
 
 }

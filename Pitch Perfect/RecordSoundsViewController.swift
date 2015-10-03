@@ -76,27 +76,40 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
 
 		resumeButton.hidden = false
 
-		let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
+		let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
 		let recordingName = "my_audio.wav"
 		let pathArray = [dirPath, recordingName]
 		let filePath = NSURL.fileURLWithPathComponents(pathArray)
 
-		var session = AVAudioSession.sharedInstance()
-		session.setCategory(AVAudioSessionCategoryRecord, error: nil)
+		let session = AVAudioSession.sharedInstance()
 
-		audioRecorder = AVAudioRecorder(URL: filePath, settings: nil, error: nil)
-		audioRecorder.delegate = self
-		audioRecorder.meteringEnabled = true
-		audioRecorder.prepareToRecord()
-		audioRecorder.record()
+		do {
+			try session.setCategory(AVAudioSessionCategoryRecord)
+			
+			audioRecorder = try AVAudioRecorder(URL: filePath!, settings: [:])
+			audioRecorder.delegate = self
+			audioRecorder.meteringEnabled = true
+			audioRecorder.prepareToRecord()
+			audioRecorder.record()
+
+		} catch let error as NSError {
+			print("Unable to start recording; error = \(error.localizedDescription)")
+		}
+
 	}
 
 	@IBAction func stopRecording(sender: UIButton) {
 		recordingStatus.text = "Tap to Record"
 		audioRecorder.stop()
 
-		var audioSession = AVAudioSession.sharedInstance()
-		audioSession.setActive(false, error: nil)
+		let audioSession = AVAudioSession.sharedInstance()
+
+		do {
+			try audioSession.setActive(false)
+		} catch let error as NSError {
+			print("Unable to stop recording session; error = \(error.localizedDescription)")
+		}
+		
 	}
 
 	// MARK: - Navigation
@@ -111,7 +124,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
 
 	// MARK: - AVAudioRecorderDelegate
 
-	func audioRecorderDidFinishRecording(recorder: AVAudioRecorder!, successfully flag: Bool) {
+	func audioRecorderDidFinishRecording(recorder: AVAudioRecorder, successfully flag: Bool) {
 		if (flag) {
 			recordedAudio = RecordedAudio(filePathUrl: recorder.url,	title: recorder.url.lastPathComponent!)
 			performSegueWithIdentifier("stopRecording", sender: recordedAudio)

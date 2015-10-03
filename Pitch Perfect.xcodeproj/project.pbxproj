@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7A25D03C1B97A355009AB41B /* movie_quote.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7A25D03B1B97A355009AB41B /* movie_quote.mp3 */; };
 		7A25D03E1B97A90A009AB41B /* PlaySoundsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A25D03D1B97A90A009AB41B /* PlaySoundsViewController.swift */; };
+		7A2FACA01BBF59F100F2EE6A /* Paperwork in Resources */ = {isa = PBXBuildFile; fileRef = 7A2FAC9F1BBF59F100F2EE6A /* Paperwork */; settings = {ASSET_TAGS = (); }; };
 		7A9BCE081B96F07000F18B9D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9BCE071B96F07000F18B9D /* AppDelegate.swift */; };
 		7A9BCE0A1B96F07000F18B9D /* RecordSoundsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9BCE091B96F07000F18B9D /* RecordSoundsViewController.swift */; };
 		7A9BCE0D1B96F07000F18B9D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A9BCE0B1B96F07000F18B9D /* Main.storyboard */; };
@@ -31,6 +32,7 @@
 /* Begin PBXFileReference section */
 		7A25D03B1B97A355009AB41B /* movie_quote.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = movie_quote.mp3; sourceTree = "<group>"; };
 		7A25D03D1B97A90A009AB41B /* PlaySoundsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaySoundsViewController.swift; sourceTree = "<group>"; };
+		7A2FAC9F1BBF59F100F2EE6A /* Paperwork */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Paperwork; sourceTree = "<group>"; };
 		7A9BCE021B96F07000F18B9D /* Pitch Perfect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pitch Perfect.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A9BCE061B96F07000F18B9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A9BCE071B96F07000F18B9D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 				7A9BCE041B96F07000F18B9D /* Pitch Perfect */,
 				7A9BCE1A1B96F07000F18B9D /* Pitch PerfectTests */,
 				7A9BCE031B96F07000F18B9D /* Products */,
+				7A2FAC9F1BBF59F100F2EE6A /* Paperwork */,
 			);
 			sourceTree = "<group>";
 		};
@@ -86,7 +89,6 @@
 				7A9BCE071B96F07000F18B9D /* AppDelegate.swift */,
 				7A9BCE091B96F07000F18B9D /* RecordSoundsViewController.swift */,
 				7A9BCE0B1B96F07000F18B9D /* Main.storyboard */,
-				7A9BCE0E1B96F07000F18B9D /* Images.xcassets */,
 				7A9BCE101B96F07000F18B9D /* LaunchScreen.xib */,
 				7A9BCE051B96F07000F18B9D /* Supporting Files */,
 				7A25D03D1B97A90A009AB41B /* PlaySoundsViewController.swift */,
@@ -98,6 +100,7 @@
 		7A9BCE051B96F07000F18B9D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7A9BCE0E1B96F07000F18B9D /* Images.xcassets */,
 				7A25D03B1B97A355009AB41B /* movie_quote.mp3 */,
 				7A9BCE061B96F07000F18B9D /* Info.plist */,
 			);
@@ -165,7 +168,7 @@
 		7A9BCDFA1B96F07000F18B9D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Gregory White";
 				TargetAttributes = {
 					7A9BCE011B96F07000F18B9D = {
@@ -206,6 +209,7 @@
 				7A9BCE121B96F07000F18B9D /* LaunchScreen.xib in Resources */,
 				7A25D03C1B97A355009AB41B /* movie_quote.mp3 in Resources */,
 				7A9BCE0F1B96F07000F18B9D /* Images.xcassets in Resources */,
+				7A2FACA01BBF59F100F2EE6A /* Paperwork in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,6 +293,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -304,7 +309,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -342,7 +347,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -356,6 +361,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "Pitch Perfect/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gaw3.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -367,6 +373,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "Pitch Perfect/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gaw3.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -385,6 +392,7 @@
 				);
 				INFOPLIST_FILE = "Pitch PerfectTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gaw3.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pitch Perfect.app/Pitch Perfect";
 			};
@@ -400,6 +408,7 @@
 				);
 				INFOPLIST_FILE = "Pitch PerfectTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gaw3.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pitch Perfect.app/Pitch Perfect";
 			};
