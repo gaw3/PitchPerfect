@@ -20,7 +20,14 @@ Current Build:  Xcode 7.2.1 / iOS 9.2, iPhone only, Portrait only
 
 ### iOS Developer Libraries In Use
 
+* [AVFoundation](./Paperwork/READMEFiles/AVFoundation.md)
+* [Foundation](./Paperwork/READMEFiles/Foundation.md)
+* [UIKit](./Paperwork/READMEFiles/UIKit.md)
+
 ### Protocols Implemented
+
+* AVAudioRecorderDelegate
+* UIApplicationDelegate
 
 ---
 **Copyright © 2016 Gregory White. All rights reserved.**
