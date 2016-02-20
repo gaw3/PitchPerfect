@@ -9,7 +9,7 @@
 * AVAudioSessionCategoryPlayback
 * AVAudioSessionCategoryRecord
 * AVAudioUnit
-* VAudioUnitDelay
+* AVAudioUnitDelay
 * AVAudioUnitReverb
 * AVAudioUnitTimePitch
 * AVAudioUnitVarispeed

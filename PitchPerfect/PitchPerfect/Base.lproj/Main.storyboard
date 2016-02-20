@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="5z7-wD-uVI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="5z7-wD-uVI">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Record-->
+        <!--Record Sounds View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController title="Record" id="vXZ-lx-hvc" customClass="RecordSoundsViewController" customModule="Pitch_Perfect" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Record Sounds View Controller" id="vXZ-lx-hvc" customClass="RecordSoundsViewController" customModule="PitchPerfect" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -127,17 +128,17 @@
                         <outlet property="recordingStatus" destination="VL7-Le-rqK" id="cQN-t1-LNM"/>
                         <outlet property="resumeButton" destination="44s-Jg-9KU" id="LAa-Jp-RNO"/>
                         <outlet property="stopButton" destination="Kxz-O1-HB1" id="1hl-4W-KFV"/>
-                        <segue destination="lE3-fy-YLj" kind="show" identifier="stopRecording" id="Vy7-LU-QvY"/>
+                        <segue destination="lE3-fy-YLj" kind="show" identifier="SegueFromRecordToPlay" id="Vy7-LU-QvY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="604.5" y="341"/>
         </scene>
-        <!--Play-->
+        <!--Play Sounds View Controller-->
         <scene sceneID="Ra6-fB-bm9">
             <objects>
-                <viewController title="Play" id="lE3-fy-YLj" customClass="PlaySoundsViewController" customModule="Pitch_Perfect" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Play Sounds View Controller" id="lE3-fy-YLj" customClass="PlaySoundsViewController" customModule="PitchPerfect" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7Hf-s4-kly"/>
                         <viewControllerLayoutGuide type="bottom" id="UV8-sI-8FZ"/>
@@ -286,6 +287,7 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" title="Play" id="8Wb-nu-Xkv"/>
                     <connections>
                         <outlet property="stopButton" destination="sYy-YZ-cA9" id="pDl-dY-JC9"/>
                     </connections>

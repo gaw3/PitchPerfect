@@ -3,106 +3,128 @@
 //  Pitch Perfect
 //
 //  Created by Gregory White on 9/2/15.
-//  Copyright (c) 2015 Gregory White. All rights reserved.
+//  Copyright (c) 2015-2016 Gregory White. All rights reserved.
 //
 
 import AVFoundation
+import Foundation
 import UIKit
 
-class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
+final internal class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
+
+	// MARK: - Private Constants
+
+	private struct Strings {
+		static let StatusPaused    = "Recording Paused..."
+		static let StatusRecording = "Recording..."
+		static let StatusTap       = "Tap to Record"
+		static let FileName        = "my_audio.wav"
+	}
+
+	// MARK: - Private Stored Variables
+
+	private var audioRecorder: AVAudioRecorder?
+	private var recordedAudio: RecordedAudio?
+
+	// MARK: - Private Computed Variables
+
+	private var docsDir: String {
+		return NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
+	}
+
+	private var audioSession: AVAudioSession {
+		return AVAudioSession.sharedInstance()
+	}
 
 	// MARK: - IB Outlets
 
-	@IBOutlet weak var pauseButton: UIButton!
-	@IBOutlet weak var recordingStatus: UILabel!
-	@IBOutlet weak var recordButton: UIButton!
-	@IBOutlet weak var resumeButton: UIButton!
-	@IBOutlet weak var stopButton: UIButton!
+	@IBOutlet weak internal var pauseButton:     UIButton!
+	@IBOutlet weak internal var recordingStatus: UILabel!
+	@IBOutlet weak internal var recordButton:    UIButton!
+	@IBOutlet weak internal var resumeButton:    UIButton!
+	@IBOutlet weak internal var stopButton:      UIButton!
 
-	// MARK: - Class Variables
+	// MARK: - View Events
 
-	var audioRecorder: AVAudioRecorder!
-	var recordedAudio: RecordedAudio!
-
-	// MARK: - View Lifecycle
-
-	override func viewDidLoad() {
+	override internal func viewDidLoad() {
 		super.viewDidLoad()
 	}
 
-	override func viewWillAppear(animated: Bool) {
-		stopButton.hidden = true
-		stopButton.enabled = false
+	override internal func viewWillAppear(animated: Bool) {
+		super.viewWillAppear(animated)
 
-		pauseButton.hidden = true
-		pauseButton.enabled = false
+		stopButton.hidden    = true
+		stopButton.enabled   = false
 
-		resumeButton.hidden = true
+		pauseButton.hidden   = true
+		pauseButton.enabled  = false
+
+		resumeButton.hidden  = true
 		resumeButton.enabled = false
 
-		recordButton.hidden = false
+		recordButton.hidden  = false
 		recordButton.enabled = true
 
-		recordingStatus.text = "Tap to Record"
+		recordingStatus.text = Strings.StatusTap
 	}
 
 	// MARK: - IB Actions
 
-	@IBAction func pauseRecording(sender: UIButton) {
-		audioRecorder.pause()
-		recordingStatus.text = "Recording Paused..."
-		stopButton.enabled = false
-		pauseButton.enabled = false
+	@IBAction internal func pauseRecording(sender: UIButton) {
+		assert(sender == pauseButton, "rcvd pause action from unknown button")
+
+		audioRecorder?.pause()
+		recordingStatus.text = Strings.StatusPaused
+		stopButton.enabled   = false
+		pauseButton.enabled  = false
 		resumeButton.enabled = true
 	}
 
-	@IBAction func resumeRecording(sender: UIButton) {
-		audioRecorder.record()
-		recordingStatus.text = "Recording..."
-		stopButton.enabled = true
-		pauseButton.enabled = true
+	@IBAction internal func resumeRecording(sender: UIButton) {
+		assert(sender == resumeButton, "rcvd resume action from unknown button")
+
+		audioRecorder?.record()
+		recordingStatus.text = Strings.StatusRecording
+		stopButton.enabled   = true
+		pauseButton.enabled  = true
 		resumeButton.enabled = false
 	}
 
-	@IBAction func startRecording(sender: UIButton) {
-		recordingStatus.text = "Recording..."
+	@IBAction internal func startRecording(sender: UIButton) {
+		assert(sender == recordButton, "rcvd record action from unknown button")
+
+		recordingStatus.text = Strings.StatusRecording
 		recordButton.enabled = false
 
-		stopButton.hidden = false
-		stopButton.enabled = true
+		stopButton.hidden    = false
+		stopButton.enabled   = true
 
-		pauseButton.hidden = false
-		pauseButton.enabled = true
+		pauseButton.hidden   = false
+		pauseButton.enabled  = true
 
-		resumeButton.hidden = false
-
-		let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
-		let recordingName = "my_audio.wav"
-		let pathArray = [dirPath, recordingName]
-		let filePath = NSURL.fileURLWithPathComponents(pathArray)
-
-		let session = AVAudioSession.sharedInstance()
+		resumeButton.hidden  = false
 
 		do {
-			try session.setCategory(AVAudioSessionCategoryRecord)
+			try audioSession.setCategory(AVAudioSessionCategoryRecord)
+			
+			let filePath = NSURL.fileURLWithPathComponents([docsDir, Strings.FileName])
 			
 			audioRecorder = try AVAudioRecorder(URL: filePath!, settings: [:])
-			audioRecorder.delegate = self
-			audioRecorder.meteringEnabled = true
-			audioRecorder.prepareToRecord()
-			audioRecorder.record()
-
+			audioRecorder?.delegate = self
+			audioRecorder?.meteringEnabled = true
+			audioRecorder?.prepareToRecord()
+			audioRecorder?.record()
 		} catch let error as NSError {
 			print("Unable to start recording; error = \(error.localizedDescription)")
 		}
 
 	}
 
-	@IBAction func stopRecording(sender: UIButton) {
-		recordingStatus.text = "Tap to Record"
-		audioRecorder.stop()
+	@IBAction internal func stopRecording(sender: UIButton) {
+		assert(sender == stopButton, "rcvd stop action from unknown button")
 
-		let audioSession = AVAudioSession.sharedInstance()
+		recordingStatus.text = Strings.StatusTap
+		audioRecorder?.stop()
 
 		do {
 			try audioSession.setActive(false)
@@ -114,24 +136,27 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
 
 	// MARK: - Navigation
 
-	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-		if (segue.identifier == "stopRecording") {
-			let playSoundsVC: PlaySoundsViewController = segue.destinationViewController as! PlaySoundsViewController
-			let data = sender as! RecordedAudio
-			playSoundsVC.receivedAudio = data
+	override internal func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+
+		if (segue.identifier == PlaySoundsViewController.UI.SegueID) {
+			let playSoundsVC = segue.destinationViewController as! PlaySoundsViewController
+			playSoundsVC.receivedAudio = recordedAudio
 		}
+
 	}
 
 	// MARK: - AVAudioRecorderDelegate
 
-	func audioRecorderDidFinishRecording(recorder: AVAudioRecorder, successfully flag: Bool) {
-		if (flag) {
-			recordedAudio = RecordedAudio(filePathUrl: recorder.url,	title: recorder.url.lastPathComponent!)
-			performSegueWithIdentifier("stopRecording", sender: recordedAudio)
+	internal func audioRecorderDidFinishRecording(recorder: AVAudioRecorder, successfully flag: Bool) {
+
+		if flag {
+			recordedAudio = RecordedAudio(filePathUrl: recorder.url, title: recorder.url.lastPathComponent!)
+			performSegueWithIdentifier(PlaySoundsViewController.UI.SegueID, sender: nil)
 		} else {
 			recordButton.enabled = true
 			stopButton.hidden = true
 		}
+
 	}
 
 }

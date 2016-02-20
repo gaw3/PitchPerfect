@@ -3,35 +3,65 @@
 //  Pitch Perfect
 //
 //  Created by Gregory White on 9/2/15.
-//  Copyright (c) 2015 Gregory White. All rights reserved.
+//  Copyright (c) 2015-2016 Gregory White. All rights reserved.
 //
 
 import AVFoundation
+import Foundation
 import UIKit
 
-class PlaySoundsViewController: UIViewController {
+final internal class PlaySoundsViewController: UIViewController {
+
+	// MARK: - Internal Constants
+
+	internal struct UI {
+		static let SegueID = "SegueFromRecordToPlay"
+	}
+
+	// MARK: - Private Constants
+
+	private struct Effects {
+		// Pitch is measured in “cents”, a logarithmic value used for measuring musical intervals. 
+		// One octave = 1200 cents.
+		static let OneOctaveHigherPitch: Float = 1200.0
+		static let OneOctaveLowerPitch: Float  = -1200.0
+		// Doubling the rate raises the pitch one octave;  halving the rate lowers the pitch one octave.
+		static let OneOctaveHigherRate: Float  = 2.0
+		static let OneOctaveLowerRate: Float   = 0.5
+		// Reverb Wet/Dry Mix is specified as the percentage of the output signal that is comprised of 
+		// the wet (reverb) signal (thus the remaining percentage of the output signal is comprised of 
+		// the dry (original) signal).
+		// 0 = output signal comprised entirely of dry signal (no wet).
+		// 100 = output signal comprised entirely of wet signal (all wet).
+		static let ReverbHalfWet: Float = 50.0
+	}
+
+	// MARK: - Internal Stored Variables
+
+	internal var receivedAudio: RecordedAudio?
+
+	// MARK: - Private Stored Variables
+
+	private let audioEngine = AVAudioEngine()
+   private var audioFile: AVAudioFile?
+
+	// MARK: - Private Computed Variables
+
+	private var audioSession: AVAudioSession {
+		return AVAudioSession.sharedInstance()
+	}
 
 	// MARK: - IB Outlets
 
-	@IBOutlet weak var stopButton: UIButton!
+	@IBOutlet weak internal var stopButton: UIButton!
 
-	// MARK: - Class Variables
+	// MARK: - View Events
 
-	var audioEngine: AVAudioEngine!
-	var audioFile: AVAudioFile!
-	var audioSession: AVAudioSession!
-	var receivedAudio: RecordedAudio!
-
-	// MARK: - View Lifecycle
-
-	override func viewDidLoad() {
+	override internal func viewDidLoad() {
 		super.viewDidLoad()
 
-		audioEngine = AVAudioEngine()
-		audioSession = AVAudioSession.sharedInstance()
-
 		do {
-			audioFile = try AVAudioFile(forReading: receivedAudio.filePathUrl)
+			audioFile = try AVAudioFile(forReading: receivedAudio!.filePathUrl)
 			try audioSession.setCategory(AVAudioSessionCategoryPlayback)
 		} catch let error as NSError {
 			print("Unable to initialize for playback; error = \(error.localizedDescription)")
@@ -41,42 +71,42 @@ class PlaySoundsViewController: UIViewController {
 
 	// MARK: - IB Actions
 
-	@IBAction func playChipmunkAudio(sender: UIButton) {
+	@IBAction internal func playChipmunkAudio(sender: UIButton) {
 		let pitchEffect = AVAudioUnitTimePitch()
-		pitchEffect.pitch = 1000
+		pitchEffect.pitch = Effects.OneOctaveHigherPitch
 		playAudioWithEffect(pitchEffect)
 	}
 
-	@IBAction func playDarthVaderAudio(sender: UIButton) {
+	@IBAction internal func playDarthVaderAudio(sender: UIButton) {
 		let pitchEffect = AVAudioUnitTimePitch()
-		pitchEffect.pitch = -1000
+		pitchEffect.pitch = Effects.OneOctaveLowerPitch
 		playAudioWithEffect(pitchEffect)
 	}
 
-	@IBAction func playEchoAudio(sender: UIButton) {
+	@IBAction internal func playEchoAudio(sender: UIButton) {
 		let echoEffect = AVAudioUnitDelay()
 		playAudioWithEffect(echoEffect)
 	}
 
-	@IBAction func playFastAudio(sender: UIButton) {
+	@IBAction internal func playFastAudio(sender: UIButton) {
 		let fastEffect = AVAudioUnitVarispeed()
-		fastEffect.rate = 2.0
+		fastEffect.rate = Effects.OneOctaveHigherRate
 		playAudioWithEffect(fastEffect)
 	}
 
-	@IBAction func playReverbAudio(sender: UIButton) {
+	@IBAction internal func playReverbAudio(sender: UIButton) {
 		let reverbEffect = AVAudioUnitReverb()
-		reverbEffect.wetDryMix = 50.0
+		reverbEffect.wetDryMix = Effects.ReverbHalfWet
 		playAudioWithEffect(reverbEffect)
 	}
 
-	@IBAction func playSlowAudio(sender: UIButton) {
+	@IBAction internal func playSlowAudio(sender: UIButton) {
 		let slowEffect = AVAudioUnitVarispeed()
-		slowEffect.rate = 0.5
+		slowEffect.rate = Effects.OneOctaveLowerRate
 		playAudioWithEffect(slowEffect)
 	}
 
-	@IBAction func stopAudio(sender: UIButton) {
+	@IBAction internal func stopAudio(sender: UIButton) {
 		audioEngine.stop()
 	}
 
@@ -93,7 +123,7 @@ class PlaySoundsViewController: UIViewController {
 		audioEngine.connect(audioPlayerNode, to: effect, format: nil)
 		audioEngine.connect(effect, to: audioEngine.outputNode, format: nil)
 
-		audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
+		audioPlayerNode.scheduleFile(audioFile!, atTime: nil, completionHandler: nil)
 
 		do {
 			try audioEngine.start()

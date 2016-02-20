@@ -39,6 +39,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7A63143C1C76FC3C00657A9B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7AD99CE21C769AFD00289866 /* PlaySoundsViewController.swift */,
+				7AD99CE41C769B3A00289866 /* RecordSoundsViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		7A63143D1C76FCA200657A9B /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				7AD99CF01C769D1F00289866 /* AppDelegate.swift */,
+			);
+			name = Delegates;
+			sourceTree = "<group>";
+		};
+		7A63143E1C76FCC800657A9B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7AD99CE01C769AD400289866 /* RecordedAudio.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		7A63143F1C76FCF300657A9B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7AD99CF21C769DE700289866 /* Main.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		7A9BCDF91B96F07000F18B9D = {
 			isa = PBXGroup;
 			children = (
@@ -58,25 +91,24 @@
 		7A9BCE041B96F07000F18B9D /* PitchPerfect */ = {
 			isa = PBXGroup;
 			children = (
-				7AD99CF21C769DE700289866 /* Main.storyboard */,
-				7AD99CF01C769D1F00289866 /* AppDelegate.swift */,
-				7AD99CE41C769B3A00289866 /* RecordSoundsViewController.swift */,
-				7A9BCE051B96F07000F18B9D /* Supporting Files */,
-				7AD99CE21C769AFD00289866 /* PlaySoundsViewController.swift */,
-				7AD99CE01C769AD400289866 /* RecordedAudio.swift */,
+				7A63143C1C76FC3C00657A9B /* Controller */,
+				7A63143D1C76FCA200657A9B /* Delegates */,
+				7A63143E1C76FCC800657A9B /* Model */,
+				7A9BCE051B96F07000F18B9D /* Resources */,
+				7A63143F1C76FCF300657A9B /* View */,
 			);
 			name = PitchPerfect;
 			path = "Pitch Perfect";
 			sourceTree = "<group>";
 		};
-		7A9BCE051B96F07000F18B9D /* Supporting Files */ = {
+		7A9BCE051B96F07000F18B9D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				7AD99CEA1C769B7F00289866 /* Images.xcassets */,
 				7AD99CE81C769B6200289866 /* movie_quote.mp3 */,
 				7AD99CE61C769B5000289866 /* Info.plist */,
 			);
-			name = "Supporting Files";
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
