@@ -20,6 +20,11 @@ final internal class PlaySoundsViewController: UIViewController {
 
 	// MARK: - Private Constants
 
+	private struct AlertTitle {
+		static let UnableToInit  = "Unable to initialize for playback"
+		static let UnableToStart = "Unable to start playback"
+	}
+
 	private struct Effects {
 		// Pitch is measured in “cents”, a logarithmic value used for measuring musical intervals. 
 		// One octave = 1200 cents.
@@ -64,7 +69,7 @@ final internal class PlaySoundsViewController: UIViewController {
 			audioFile = try AVAudioFile(forReading: receivedAudio!.filePathUrl)
 			try audioSession.setCategory(AVAudioSessionCategoryPlayback)
 		} catch let error as NSError {
-			print("Unable to initialize for playback; error = \(error.localizedDescription)")
+			presentAlert(AlertTitle.UnableToInit, message: error.localizedDescription)
 		}
 
 	}
@@ -129,7 +134,7 @@ final internal class PlaySoundsViewController: UIViewController {
 			try audioEngine.start()
 			audioPlayerNode.play()
 		} catch let error as NSError {
-			print("Unable to start playback; error = \(error.localizedDescription)")
+			presentAlert(AlertTitle.UnableToStart, message: error.localizedDescription)
 		}
 
 	}

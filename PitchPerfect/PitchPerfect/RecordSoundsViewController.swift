@@ -14,6 +14,11 @@ final internal class RecordSoundsViewController: UIViewController, AVAudioRecord
 
 	// MARK: - Private Constants
 
+	private struct AlertTitle {
+		static let UnableToStart = "Unable to start recording"
+		static let UnableToStop  = "Unable to stop recording"
+	}
+
 	private struct Strings {
 		static let StatusPaused    = "Recording Paused..."
 		static let StatusRecording = "Recording..."
@@ -115,7 +120,7 @@ final internal class RecordSoundsViewController: UIViewController, AVAudioRecord
 			audioRecorder?.prepareToRecord()
 			audioRecorder?.record()
 		} catch let error as NSError {
-			print("Unable to start recording; error = \(error.localizedDescription)")
+			presentAlert(AlertTitle.UnableToStart, message:  error.localizedDescription)
 		}
 
 	}
@@ -129,7 +134,7 @@ final internal class RecordSoundsViewController: UIViewController, AVAudioRecord
 		do {
 			try audioSession.setActive(false)
 		} catch let error as NSError {
-			print("Unable to stop recording session; error = \(error.localizedDescription)")
+			presentAlert(AlertTitle.UnableToStop, message:  error.localizedDescription)
 		}
 		
 	}
