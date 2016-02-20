@@ -1,6 +1,7 @@
 # ![App Icon](./Paperwork/READMEFiles/PitchPerfect_80.png)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PitchPerfect
 
-PitchPerfect allows ...
+PitchPerfect allows the user to record sound via the device microphone,
+and then play that sound back modulated in a fashion chosen by the user.
 
 PitchPerfect is Portfolio Project #1 of the Udacity iOS Developer Nanodegree
 Program.  The following list contains pertinent course documents:
@@ -17,6 +18,8 @@ Project Build:  Xcode 7.0.1 / iOS 9.0, iPhone only, Portrait only
 Current Build:  Xcode 7.2.1 / iOS 9.2, iPhone only, Portrait only
 
 ## Design
+
+[ verbiage TBD ]
 
 ### iOS Developer Libraries In Use
 
