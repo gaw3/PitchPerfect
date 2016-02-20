@@ -16,6 +16,7 @@ Project Grade:  **Exceeds Expectations**
 Project Build:  Xcode 7.0.1 / iOS 9.0, iPhone only, Portrait only
 
 Current Build:  Xcode 7.2.1 / iOS 9.2, iPhone only, Portrait only
+[Pull tag v1.1](https://github.com/gaw3/PitchPerfect/tree/v1.1)
 
 ## Design
 
