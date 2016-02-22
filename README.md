@@ -12,11 +12,13 @@ Program.  The following list contains pertinent course documents:
 * [Udacity Git Commit Message Style Guide](./Paperwork/Udacity/UdacityGitCommitMessageStyleGuide.pdf)  
 * [Udacity Project & Code Reviews](https://review.udacity.com/#!/reviews/48019)
 
-Project Grade:  **Exceeds Expectations**  
-Project Build:  Xcode 7.0.1 / iOS 9.0, iPhone only, Portrait only
-
-Current Build:  Xcode 7.2.1 / iOS 9.2, iPhone only, Portrait only
-[Pull tag v1.1](https://github.com/gaw3/PitchPerfect/tree/v1.1)
+|               | Project Submission          | Currently
+| :----------   | :-------------              | :----------------- |
+| Grade:        |  ***Exceeds Expectations*** | |  
+| App Version:  | 2.0                         | 2.1&nbsp;&nbsp;(GH tag v2.1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[changelog](./Paperwork/READMEFiles/ChangeLog.md)|
+| Environment:  | Xcode 7.0.1 / iOS 9.0       | Xcode 7.2.1 / iOS 9.2 |
+| Devices:      | iPhone Only                 | No Change |
+| Orientations: | Portrait Only               | No Change |
 
 ## Design
 
