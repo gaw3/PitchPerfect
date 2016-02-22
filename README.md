@@ -3,6 +3,8 @@
 PitchPerfect allows the user to record sound via the device microphone,
 and then play that sound back modulated in a fashion chosen by the user.
 
+## Project
+
 PitchPerfect is Portfolio Project #1 of the Udacity iOS Developer Nanodegree
 Program.  The following list contains pertinent course documents:
 * [Udacity App Specification](./Paperwork/Udacity/UdacityAppSpecification.pdf)  
@@ -15,7 +17,7 @@ Program.  The following list contains pertinent course documents:
 |               | Project Submission          | Currently
 | :----------   | :-------------              | :----------------- |
 | Grade:        |  ***Exceeds Expectations*** | |  
-| App Version:  | 2.0                         | 2.1&nbsp;&nbsp;(GH tag v2.1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[changelog](./Paperwork/READMEFiles/ChangeLog.md)|
+| App Version:  | 1.0                         | 1.1&nbsp;&nbsp;(GH tag v1.1.1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[changelog](./Paperwork/READMEFiles/ChangeLog.md)|
 | Environment:  | Xcode 7.0.1 / iOS 9.0       | Xcode 7.2.1 / iOS 9.2 |
 | Devices:      | iPhone Only                 | No Change |
 | Orientations: | Portrait Only               | No Change |
