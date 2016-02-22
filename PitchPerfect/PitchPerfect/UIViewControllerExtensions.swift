@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension (UIViewController) {
+extension UIViewController {
 
 	// MARK: - API
 
