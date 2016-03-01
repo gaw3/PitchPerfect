@@ -26,14 +26,18 @@ Program.  The following list contains pertinent course documents:
 
 ### Record
 
-The Record View is the initial view after app launch.
+The Record View is the initial view after app launch (first panel in
+following table).
 
-| Tap to Record                 | Recording...    | Recording Paused...
-| :-------------:        | :-------------: | :-------------:
-| ![](./Paperwork/READMEFiles/TapToRecord.png) | ![](./Paperwork/READMEFiles/Recording.png) | ![](./Paperwork/READMEFiles/RecordingPaused.png)
+| Tap to Record                                | Recording...                               | Recording Paused...                              |
+| :-------------:                              | :-------------:                            | :-------------:                                  |
+| ![](./Paperwork/READMEFiles/TapToRecord.png) | ![](./Paperwork/READMEFiles/Recording.png) | ![](./Paperwork/READMEFiles/RecordingPaused.png) |
 
-
-
+* Tap the microphone to transition to **Recording...**:
+  - Microphone button becomes inactive
+  - Legend changes to **Recording...**
+  - Control buttons appear along the bottom:
+    + ![Pause Button](./Paperwork/READMEFiles/pause_20_blue.png) - Pause
 
 
 
