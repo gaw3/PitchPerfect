@@ -37,23 +37,19 @@ TABLE 2 - Recording Control Buttons
 | :---:  | :---: | :---: |
 | ![Resume Button](./Paperwork/images/ResumeButton_30.png) | ![Pause Button](./Paperwork/images/PauseButton_30.png) | ![Stop Button](./Paperwork/images/StopButton_30.png) |
 
-* The Record View is the initial view after app launch (TABLE 1 - **Tap to Record**).
-<br/>
-* Tap the active microphone icon to start recording:
+* The Record View is the initial view after app launch (TABLE 1 - **Tap to Record**).<br/><br/>
+* Tap the active microphone icon to start recording:  
   - The view transitions to look like TABLE 1 - **Recording...**
-  - Icons that are "greyed out" are inactive and will not respond to a tap
-<br/>
+  - Icons that are "greyed out" are inactive and will not respond to a tap<br/><br/>
 * While recording, tap the **Pause** button to pause recording:
   - The view transitions to look like TABLE 1 - **Recording Paused...**
-  - Resume button becomes active, pause/stop buttons become inactive.
-<br/>
+  - Resume button becomes active, pause/stop buttons become inactive.<br/><br/>
 * While recording, tap the **Stop** button to stop recording:
   - Recording function is terminated
-  - The view transitions to the Playback View.
-<br/>
+  - The view transitions to the Playback View.<br/><br/>
 * While recording is paused, tap the **Resume** button to continue recording:
   - New audio will be appended to previously recorded audio
-  - Resume button becomes inactive, pause/stop buttons become active.
+  - Resume button becomes inactive, pause/stop buttons become active.<br/><br/>
 
 ### Playback View
 
@@ -75,8 +71,7 @@ TABLE 4 - Playback Effects Buttons
 * Tap the **Darth Vader** button to play the original audio with pitch one octave lower that the original, making the audio sound lower.
 * Tap the **Hawk** button to play the original audio with an [echo](https://en.wikipedia.org/wiki/Echo) based on a one-second delay.
 * Tap the **Reverb** button to play the original audio with a [reverberation](https://en.wikipedia.org/wiki/Reverberation) containing the acoustic characteristics of a medium-sized hall environment, using a [wet-dry mix](http://www.differencebetween.net/technology/difference-between-wet-and-dry-signals-or-sounds/) of 50%.
-<br/>
-* During playback, tap the **Stop** button to terminate playback
+* During playback, tap the **Stop** button to terminate playback<br/><br/>
 * During playback, tap an effect button to terminate the current playback, and restart playback with the new effect.
 * At any time, tap the **< Record** button (in the navigation bar) to terminate playback (if active) and return to the **Tap to Record** state of the **Record View**.
 
