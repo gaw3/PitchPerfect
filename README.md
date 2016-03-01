@@ -1,4 +1,4 @@
-# ![App Icon](./Paperwork/READMEFiles/PitchPerfectAppIcon_80.png)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PitchPerfect
+# ![App Icon](./Paperwork/images/PitchPerfectAppIcon_80.png)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PitchPerfect
 
 PitchPerfect allows the user to record sound via the device microphone, and then replay that sound modulated in a fashion chosen by the user.
 
@@ -29,13 +29,13 @@ TABLE 1 - Record View States
 
 | Tap to Record | Recording... | Recording Paused... |
 | :---:         | :---:        | :---:               |
-| ![Tap to Record View](./Paperwork/READMEFiles/TapToRecordView.png) | ![Recording View](./Paperwork/READMEFiles/RecordingView.png) | ![Recording Paused View](./Paperwork/READMEFiles/RecordingPausedView.png) |
+| ![Tap to Record View](./Paperwork/images/TapToRecordView.png) | ![Recording View](./Paperwork/images/RecordingView.png) | ![Recording Paused View](./Paperwork/images/RecordingPausedView.png) |
 
 TABLE 2 - Recording Control Buttons
 
 | Resume | Pause | Stop  |
 | :---:  | :---: | :---: |
-| ![Resume Button](./Paperwork/READMEFiles/ResumeButton_30.png) | ![Pause Button](./Paperwork/READMEFiles/PauseButton_30.png) | ![Stop Button](./Paperwork/READMEFiles/StopButton_30.png) |
+| ![Resume Button](./Paperwork/images/ResumeButton_30.png) | ![Pause Button](./Paperwork/images/PauseButton_30.png) | ![Stop Button](./Paperwork/images/StopButton_30.png) |
 
 * The Record View is the initial view after app launch (TABLE 1 - **Tap to Record**).
 <br/>
@@ -61,13 +61,13 @@ TABLE 3 - Playback View
 
 | Play                                      | 
 | :---:                           |                      
-| ![Playback View](./Paperwork/READMEFiles/PlayView.png) |
+| ![Playback View](./Paperwork/images/PlayView.png) |
 
 TABLE 4 - Playback Effects Buttons
 
 | Snail  | Rabbit | Chipmunk | Darth Vader | Hawk  | Reverb |
 | :---:  | :---:  | :---:    | :---:       | :---: | :---:  | 
-| ![Snail Button](./Paperwork/READMEFiles/SnailButton_50.png) | ![Rabbit Button](./Paperwork/READMEFiles/RabbitButton_50.png) | ![Chipmunk Button](./Paperwork/READMEFiles/ChipmunkButton_50.png) | ![Darth Vader Button](./Paperwork/READMEFiles/DarthVaderButton_50.png) | ![Hawk Button](./Paperwork/READMEFiles/HawkButton_50.png) | ![Reverb Button](./Paperwork/READMEFiles/ReverbButton_50.png)
+| ![Snail Button](./Paperwork/images/SnailButton_50.png) | ![Rabbit Button](./Paperwork/images/RabbitButton_50.png) | ![Chipmunk Button](./Paperwork/images/ChipmunkButton_50.png) | ![Darth Vader Button](./Paperwork/images/DarthVaderButton_50.png) | ![Hawk Button](./Paperwork/images/HawkButton_50.png) | ![Reverb Button](./Paperwork/images/ReverbButton_50.png)
 
 * Tap the **Snail** button to play the original audio at one-half the recording speed, making the audio sound slower.
 * Tap the **Rabbit** button to play the original audio at twice the recording speed, making the audio sound faster.
