@@ -24,6 +24,22 @@ Program.  The following list contains pertinent course documents:
 
 ## Design
 
+### Record
+
+The Record View is the initial view after app launch.
+
+| Tap to Record                 | Recording...    | Recording Paused...
+| :-------------:        | :-------------: | :-------------:
+| ![](./Paperwork/READMEFiles/TapToRecord.png) | ![](./Paperwork/READMEFiles/Recording.png) | ![](./Paperwork/READMEFiles/RecordingPaused.png)
+
+
+
+
+
+
+
+### Playback
+
 [ verbiage TBD ]
 
 ### iOS Developer Libraries In Use
