@@ -1,22 +1,21 @@
-# ![App Icon](./Paperwork/READMEFiles/PitchPerfect_80.png)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PitchPerfect
+# ![App Icon](./Paperwork/READMEFiles/PitchPerfectAppIcon_80.png)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PitchPerfect
 
-PitchPerfect allows the user to record sound via the device microphone,
-and then play that sound back modulated in a fashion chosen by the user.
+PitchPerfect allows the user to record sound via the device microphone, and then replay that sound modulated in a fashion chosen by the user.
 
 ## Project
 
-PitchPerfect is Portfolio Project #1 of the Udacity iOS Developer Nanodegree
-Program.  The following list contains pertinent course documents:
+PitchPerfect is Portfolio Project #1 of the Udacity iOS Developer Nanodegree Program.  The following list contains pertinent course documents:  
+
 * [Udacity App Specification](./Paperwork/Udacity/UdacityAppSpecification.pdf)  
 * [Udacity Code Improvements](./Paperwork/Udacity/UdacityCodeImprovements.pdf)
 * [Udacity Grading Rubric](./Paperwork/Udacity/UdacityGradingRubric.pdf)  
 * [GitHub Swift Style Guide](./Paperwork/Udacity/GitHubSwiftStyleGuide.pdf)  
 * [Udacity Git Commit Message Style Guide](./Paperwork/Udacity/UdacityGitCommitMessageStyleGuide.pdf)  
-* [Udacity Project & Code Reviews](https://review.udacity.com/#!/reviews/48019)
+* [Udacity Project & Code Reviews](https://review.udacity.com/#!/reviews/48019)<br/><br/>
 
 |               | Project Submission          | Currently
-| :----------   | :-------------              | :----------------- |
-| Grade:        |  ***Exceeds Expectations*** | |  
+| :---          | :---                        | :---      |
+| Grade:        |  ***Exceeds Expectations*** |           |  
 | App Version:  | 1.0                         | 1.1&nbsp;&nbsp;(GH tag v1.1.1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[changelog](./Paperwork/READMEFiles/ChangeLog.md)|
 | Environment:  | Xcode 7.0.1 / iOS 9.0       | Xcode 7.2.1 / iOS 9.2 |
 | Devices:      | iPhone Only                 | No Change |
@@ -24,27 +23,62 @@ Program.  The following list contains pertinent course documents:
 
 ## Design
 
-### Record
+### Record View
 
-The Record View is the initial view after app launch (first panel in
-following table).
+TABLE 1 - Record View States
 
-| Tap to Record                                | Recording...                               | Recording Paused...                              |
-| :-------------:                              | :-------------:                            | :-------------:                                  |
-| ![](./Paperwork/READMEFiles/TapToRecord.png) | ![](./Paperwork/READMEFiles/Recording.png) | ![](./Paperwork/READMEFiles/RecordingPaused.png) |
+| Tap to Record | Recording... | Recording Paused... |
+| :---:         | :---:        | :---:               |
+| ![Tap to Record View](./Paperwork/READMEFiles/TapToRecordView.png) | ![Recording View](./Paperwork/READMEFiles/RecordingView.png) | ![Recording Paused View](./Paperwork/READMEFiles/RecordingPausedView.png) |
 
-* Tap the microphone to transition to **Recording...**:
-  - Microphone button becomes inactive
-  - Legend changes to **Recording...**
-  - Control buttons appear along the bottom:
-    + ![Pause Button](./Paperwork/READMEFiles/pause_20_blue.png) - Pause
+TABLE 2 - Recording Control Buttons
 
+| Resume | Pause | Stop  |
+| :---:  | :---: | :---: |
+| ![Resume Button](./Paperwork/READMEFiles/ResumeButton_30.png) | ![Pause Button](./Paperwork/READMEFiles/PauseButton_30.png) | ![Stop Button](./Paperwork/READMEFiles/StopButton_30.png) |
 
+* The Record View is the initial view after app launch (TABLE 1 - **Tap to Record**).
+<br/>
+* Tap the active microphone icon to start recording:
+  - The view transitions to look like TABLE 1 - **Recording...**
+  - Icons that are "greyed out" are inactive and will not respond to a tap
+<br/>
+* While recording, tap the **Pause** button to pause recording:
+  - The view transitions to look like TABLE 1 - **Recording Paused...**
+  - Resume button becomes active, pause/stop buttons become inactive.
+<br/>
+* While recording, tap the **Stop** button to stop recording:
+  - Recording function is terminated
+  - The view transitions to the Playback View.
+<br/>
+* While recording is paused, tap the **Resume** button to continue recording:
+  - New audio will be appended to previously recorded audio
+  - Resume button becomes inactive, pause/stop buttons become active.
 
+### Playback View
 
-### Playback
+TABLE 3 - Playback View
 
-[ verbiage TBD ]
+| Play                                      | 
+| :---:                           |                      
+| ![Playback View](./Paperwork/READMEFiles/PlayView.png) |
+
+TABLE 4 - Playback Effects Buttons
+
+| Snail  | Rabbit | Chipmunk | Darth Vader | Hawk  | Reverb |
+| :---:  | :---:  | :---:    | :---:       | :---: | :---:  | 
+| ![Snail Button](./Paperwork/READMEFiles/SnailButton_50.png) | ![Rabbit Button](./Paperwork/READMEFiles/RabbitButton_50.png) | ![Chipmunk Button](./Paperwork/READMEFiles/ChipmunkButton_50.png) | ![Darth Vader Button](./Paperwork/READMEFiles/DarthVaderButton_50.png) | ![Hawk Button](./Paperwork/READMEFiles/HawkButton_50.png) | ![Reverb Button](./Paperwork/READMEFiles/ReverbButton_50.png)
+
+* Tap the **Snail** button to play the original audio at one-half the recording speed, making the audio sound slower.
+* Tap the **Rabbit** button to play the original audio at twice the recording speed, making the audio sound faster.
+* Tap the **Chipmunk** button to play the original audio with pitch one octave higher than the original, making the audio sound higher.
+* Tap the **Darth Vader** button to play the original audio with pitch one octave lower that the original, making the audio sound lower.
+* Tap the **Hawk** button to play the original audio with an [echo](https://en.wikipedia.org/wiki/Echo) based on a one-second delay.
+* Tap the **Reverb** button to play the original audio with a [reverberation](https://en.wikipedia.org/wiki/Reverberation) containing the acoustic characteristics of a medium-sized hall environment, using a [wet-dry mix](http://www.differencebetween.net/technology/difference-between-wet-and-dry-signals-or-sounds/) of 50%.
+<br/>
+* During playback, tap the **Stop** button to terminate playback
+* During playback, tap an effect button to terminate the current playback, and restart playback with the new effect.
+* At any time, tap the **< Record** button (in the navigation bar) to terminate playback (if active) and return to the **Tap to Record** state of the **Record View**.
 
 ### iOS Developer Libraries In Use
 
@@ -54,8 +88,10 @@ following table).
 
 ### Protocols Implemented
 
-* AVAudioRecorderDelegate
-* UIApplicationDelegate
+```
+AVAudioRecorderDelegate
+UIApplicationDelegate
+```
 
 ---
 **Copyright © 2016 Gregory White. All rights reserved.**
