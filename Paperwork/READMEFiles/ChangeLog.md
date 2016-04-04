@@ -1,5 +1,8 @@
 # Change Log
 
+### v1.3
+* Update to Xcode 7.3 / iOS 9.3
+
 ### v1.2
 * Finished README
 
