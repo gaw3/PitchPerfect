@@ -106,7 +106,7 @@ TABLE 4 - Playback Effects Buttons
 [ReverbButton]:         ./Paperwork/images/ReverbButton_50.png
 [RPV]:                  ./Paperwork/images/RecordingPausedView.png
 [RV]:                   ./Paperwork/images/RecordingView.png
-[SnailButton]:          ./Paperwork/images/SnailButton_50.png)
+[SnailButton]:          ./Paperwork/images/SnailButton_50.png
 [StopButton]:           ./Paperwork/images/StopButton_30.png
 [TRV]:                  ./Paperwork/images/TapToRecordView.png
 
