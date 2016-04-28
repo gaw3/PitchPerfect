@@ -1,4 +1,4 @@
-# ![App Icon](./Paperwork/images/PitchPerfectAppIcon_80.png)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PitchPerfect
+# ![][AppIcon]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PitchPerfect
 
 PitchPerfect allows the user to record sound via the device microphone, and then replay that sound modulated in a fashion chosen by the user.
 
@@ -6,20 +6,21 @@ PitchPerfect allows the user to record sound via the device microphone, and then
 
 PitchPerfect is Portfolio Project #1 of the Udacity iOS Developer Nanodegree Program.  The following list contains pertinent course documents:  
 
-* [Udacity App Specification](./Paperwork/Udacity/UdacityAppSpecification.pdf)  
-* [Udacity Code Improvements](./Paperwork/Udacity/UdacityCodeImprovements.pdf)
-* [Udacity Grading Rubric](./Paperwork/Udacity/UdacityGradingRubric.pdf)  
-* [GitHub Swift Style Guide](./Paperwork/Udacity/GitHubSwiftStyleGuide.pdf)  
-* [Udacity Git Commit Message Style Guide](./Paperwork/Udacity/UdacityGitCommitMessageStyleGuide.pdf)  
-* [Udacity Project & Code Reviews](https://review.udacity.com/#!/reviews/48019)<br/><br/>
+* [Udacity App Specification][AppSpec]  
+* [Udacity Code Improvements][CodeImprovements]
+* [Udacity Grading Rubric][GradingRubric]  
+* [GitHub Swift Style Guide][SwiftStyleGuide]  
+* [Udacity Git Commit Message Style Guide][CommitMsgStyleGuide]  
+* [Udacity Project Review][ProjectReview]<br/><br/>
 
-|               | Project Submission          | Currently
-| :---          | :---                        | :---      |
-| Grade:        |  ***Exceeds Expectations*** |           |  
-| App Version:  | 1.0                         | 1.3&nbsp;&nbsp;(GH tag v1.3)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[changelog](./Paperwork/READMEFiles/ChangeLog.md)|
+|               | Project Submission          | Current State       |
+| :----------   | :-------------              | :-----------------  |
+| Grade:        |  ***Exceeds Expectations*** |                     |  
+| GitHub Tag    | v1.3                        | v1.3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[changelog][ChangeLog] |
+| App Version:  | 1.0                         | 1.3                 |
 | Environment:  | Xcode 7.0.1 / iOS 9.0       | Xcode 7.3 / iOS 9.3 |
-| Devices:      | iPhone Only                 | No Change |
-| Orientations: | Portrait Only               | No Change |
+| Devices:      | iPhone Only                 | same                |
+| Orientations: | Portrait Only               | same                |
 
 ## Design
 
@@ -29,13 +30,14 @@ TABLE 1 - Record View States
 
 | Tap to Record | Recording... | Recording Paused... |
 | :---:         | :---:        | :---:               |
-| ![Tap to Record View](./Paperwork/images/TapToRecordView.png) | ![Recording View](./Paperwork/images/RecordingView.png) | ![Recording Paused View](./Paperwork/images/RecordingPausedView.png) |
+| ![][TRV]      | ![][RV]      | ![][RPV]            |
 
 TABLE 2 - Recording Control Buttons
 
 | Resume | Pause | Stop  |
 | :---:  | :---: | :---: |
-| ![Resume Button](./Paperwork/images/ResumeButton_30.png) | ![Pause Button](./Paperwork/images/PauseButton_30.png) | ![Stop Button](./Paperwork/images/StopButton_30.png) |
+| ![][ResumeButton] | ![][PauseButton] | ![][StopButton] |
+
 
 * The Record View is the initial view after app launch and looks like **Tap to Record**.&nbsp;&nbsp;[see Table 1]<br/><br/>
 * Tap the active microphone icon to start recording:  
@@ -57,36 +59,72 @@ TABLE 3 - Playback View
 
 | Play                                      | 
 | :---:                           |                      
-| ![Playback View](./Paperwork/images/PlayView.png) |
+| ![][PV] |
 
 TABLE 4 - Playback Effects Buttons
 
 | Snail  | Rabbit | Chipmunk | Darth Vader | Hawk  | Reverb |
 | :---:  | :---:  | :---:    | :---:       | :---: | :---:  | 
-| ![Snail Button](./Paperwork/images/SnailButton_50.png) | ![Rabbit Button](./Paperwork/images/RabbitButton_50.png) | ![Chipmunk Button](./Paperwork/images/ChipmunkButton_50.png) | ![Darth Vader Button](./Paperwork/images/DarthVaderButton_50.png) | ![Hawk Button](./Paperwork/images/HawkButton_50.png) | ![Reverb Button](./Paperwork/images/ReverbButton_50.png)
+| ![][SnailButton] | ![][RabbitButton] | ![][ChipmunkButton] | ![][DarthVaderButton] | ![][HawkButton] | ![][ReverbButton]
 
 * Tap the **Snail** button to play the original audio at one-half the recording speed, *making the audio sound slower*.
 * Tap the **Rabbit** button to play the original audio at twice the recording speed, *making the audio sound faster*.
 * Tap the **Chipmunk** button to play the original audio with pitch one octave higher than the original, *making the audio sound higher*.
 * Tap the **Darth Vader** button to play the original audio with pitch one octave lower that the original, *making the audio sound lower*.
-* Tap the **Hawk** button to play the original audio with *an [echo](https://en.wikipedia.org/wiki/Echo) based on a one-second delay*.
-* Tap the **Reverb** button to play the original audio with *a [reverberation](https://en.wikipedia.org/wiki/Reverberation) containing the acoustic characteristics of a medium-sized hall environment, using a [wet-dry mix](http://www.differencebetween.net/technology/difference-between-wet-and-dry-signals-or-sounds/) of 50%*.
+* Tap the **Hawk** button to play the original audio with *an [echo][Echo] based on a one-second delay*.
+* Tap the **Reverb** button to play the original audio with *a [reverberation][Reverberation] containing the acoustic characteristics of a medium-sized hall environment, using a [wet-dry mix][WetDryMix] of 50%*.
 * During playback, tap the **Stop** button to terminate playback<br/><br/>
 * During playback, tap an effect button to terminate the current playback, and restart playback with the new effect.
 * At any time, tap the **< Record** button (in the navigation bar) to terminate playback (if active) and return to the **Tap to Record** state of the **Record View**.
 
-### iOS Developer Libraries In Use
+### iOS Frameworks
 
-* [AVFoundation](./Paperwork/READMEFiles/AVFoundation.md)
-* [Foundation](./Paperwork/READMEFiles/Foundation.md)
-* [UIKit](./Paperwork/READMEFiles/UIKit.md)
+* [AVFoundation][AVF]
+* [Foundation][FDTN]
+* [UIKit][UK]
 
-### Protocols Implemented
+### 3rd-Party
 
-```
-AVAudioRecorderDelegate
-UIApplicationDelegate
-```
+* *GitHub Swift Style Guide* lives in this [repo][StyleGuideRepo].
+* `Swift.gitignore`, the template used to create the local `.gitignore` file, lives in this [repo][GitIgnoreRepo].
 
 ---
 **Copyright © 2016 Gregory White. All rights reserved.**
+
+
+
+
+
+[AppIcon]:              ./Paperwork/images/PitchPerfectAppIcon_80.png
+[ChipmunkButton]:       ./Paperwork/images/ChipmunkButton_50.png
+[DarthVaderButton]:     ./Paperwork/images/DarthVaderButton_50.png
+[HawkButton]:           ./Paperwork/images/HawkButton_50.png
+[PauseButton]:          ./Paperwork/images/PauseButton_30.png
+[PV]:                   ./Paperwork/images/PlayView.png
+[RabbitButton]:         ./Paperwork/images/RabbitButton_50.png
+[ResumeButton]:         ./Paperwork/images/ResumeButton_30.png
+[ReverbButton]:         ./Paperwork/images/ReverbButton_50.png
+[RPV]:                  ./Paperwork/images/RecordingPausedView.png
+[RV]:                   ./Paperwork/images/RecordingView.png
+[SnailButton]:          ./Paperwork/images/SnailButton_50.png)
+[StopButton]:           ./Paperwork/images/StopButton_30.png
+[TRV]:                  ./Paperwork/images/TapToRecordView.png
+
+[AppSpec]:              ./Paperwork/Udacity/UdacityAppSpecification.pdf
+[CodeImprovements]:     ./Paperwork/Udacity/UdacityCodeImprovements.pdf
+[CommitMsgStyleGuide]:  ./Paperwork/Udacity/UdacityGitCommitMessageStyleGuide.pdf
+[GradingRubric]:        ./Paperwork/Udacity/UdacityGradingRubric.pdf
+[ProjectReview]:        ./Paperwork/Udacity/UdacityProjectReview.pdf
+[SwiftStyleGuide]:      ./Paperwork/Udacity/GitHubSwiftStyleGuide.pdf  
+
+[ChangeLog]:            ./Paperwork/READMEFiles/ChangeLog.md
+
+[AVF]:                  ./Paperwork/READMEFiles/AVFoundation.md
+[FDTN]:                 ./Paperwork/READMEFiles/Foundation.md
+[UK]:                   ./Paperwork/READMEFiles/UIKit.md 
+
+[Echo]:                 https://en.wikipedia.org/wiki/Echo
+[GitIgnoreRepo]:        https://github.com/github/gitignore
+[Reverberation]:        https://en.wikipedia.org/wiki/Reverberation
+[StyleGuideRepo]:       https://github.com/github/swift-style-guide
+[WetDryMix]:            http://www.differencebetween.net/technology/difference-between-wet-and-dry-signals-or-sounds/

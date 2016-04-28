@@ -1,4 +1,4 @@
-# AVFoundation
+# AVFoundation Framework
 
 ```
 AVAudioEngine
@@ -8,7 +8,7 @@ AVAudioPlayerNode
 
 ```
 AVAudioRecorder
-AVAudioRecorderDelegate
+AVAudioRecorderDelegate - protocol
 ```
 
 ```
