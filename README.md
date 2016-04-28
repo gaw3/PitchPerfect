@@ -1,6 +1,6 @@
 # ![][AppIcon]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PitchPerfect
 
-PitchPerfect allows the user to record sound via the device microphone, and then replay that sound modulated in a fashion chosen by the user.
+PitchPerfect allows the user to record sound via the device microphone, and then play that sound modulated in one of six different ways.
 
 ## Project
 
