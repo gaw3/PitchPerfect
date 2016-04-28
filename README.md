@@ -39,7 +39,7 @@ TABLE 2 - Recording Control Buttons
 | ![][ResumeButton] | ![][PauseButton] | ![][StopButton] |
 
 
-* The Record View is the initial view after app launch and looks like **Tap to Record**.&nbsp;&nbsp;[see Table 1]<br/><br/>
+* The **Record View** is the initial view after app launch and looks like **Tap to Record**.&nbsp;&nbsp;[see Table 1]<br/><br/>
 * Tap the active microphone icon to start recording:  
   - The view transitions to **Recording...**.&nbsp;&nbsp;[see Table 1]
   - Icons that are "greyed out" are inactive and will not respond to a tap.<br/><br/>
@@ -65,7 +65,7 @@ TABLE 4 - Playback Effects Buttons
 
 | Snail  | Rabbit | Chipmunk | Darth Vader | Hawk  | Reverb |
 | :---:  | :---:  | :---:    | :---:       | :---: | :---:  | 
-| ![][SnailButton] | ![][RabbitButton] | ![][ChipmunkButton] | ![][DarthVaderButton] | ![][HawkButton] | ![][ReverbButton]
+| ![][SnailButton] | ![][RabbitButton] | ![][ChipmunkButton] | ![][DarthVaderButton] | ![][HawkButton] | ![][ReverbButton] |
 
 * Tap the **Snail** button to play the original audio at one-half the recording speed, *making the audio sound slower*.
 * Tap the **Rabbit** button to play the original audio at twice the recording speed, *making the audio sound faster*.
