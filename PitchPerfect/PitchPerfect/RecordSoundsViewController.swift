@@ -7,10 +7,9 @@
 //
 
 import AVFoundation
-import Foundation
 import UIKit
 
-final internal class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
+final class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
 
 	// MARK: - Private Constants
 
@@ -43,19 +42,19 @@ final internal class RecordSoundsViewController: UIViewController, AVAudioRecord
 
 	// MARK: - IB Outlets
 
-	@IBOutlet weak internal var pauseButton:     UIButton!
-	@IBOutlet weak internal var recordingStatus: UILabel!
-	@IBOutlet weak internal var recordButton:    UIButton!
-	@IBOutlet weak internal var resumeButton:    UIButton!
-	@IBOutlet weak internal var stopButton:      UIButton!
+	@IBOutlet weak var pauseButton:     UIButton!
+	@IBOutlet weak var recordingStatus: UILabel!
+	@IBOutlet weak var recordButton:    UIButton!
+	@IBOutlet weak var resumeButton:    UIButton!
+	@IBOutlet weak var stopButton:      UIButton!
 
 	// MARK: - View Events
 
-	override internal func viewDidLoad() {
+	override func viewDidLoad() {
 		super.viewDidLoad()
 	}
 
-	override internal func viewWillAppear(_ animated: Bool) {
+	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 
 		stopButton.isHidden    = true
@@ -75,7 +74,7 @@ final internal class RecordSoundsViewController: UIViewController, AVAudioRecord
 
 	// MARK: - IB Actions
 
-	@IBAction internal func pauseRecording(_ sender: UIButton) {
+	@IBAction func pauseRecording(_ sender: UIButton) {
 		assert(sender == pauseButton, "rcvd pause action from unknown button")
 
 		audioRecorder?.pause()
@@ -85,7 +84,7 @@ final internal class RecordSoundsViewController: UIViewController, AVAudioRecord
 		resumeButton.isEnabled = true
 	}
 
-	@IBAction internal func resumeRecording(_ sender: UIButton) {
+	@IBAction func resumeRecording(_ sender: UIButton) {
 		assert(sender == resumeButton, "rcvd resume action from unknown button")
 
 		audioRecorder?.record()
@@ -95,7 +94,7 @@ final internal class RecordSoundsViewController: UIViewController, AVAudioRecord
 		resumeButton.isEnabled = false
 	}
 
-	@IBAction internal func startRecording(_ sender: UIButton) {
+	@IBAction func startRecording(_ sender: UIButton) {
 		assert(sender == recordButton, "rcvd record action from unknown button")
 
 		recordingStatus.text = Strings.StatusRecording
@@ -125,7 +124,7 @@ final internal class RecordSoundsViewController: UIViewController, AVAudioRecord
 
 	}
 
-	@IBAction internal func stopRecording(_ sender: UIButton) {
+	@IBAction func stopRecording(_ sender: UIButton) {
 		assert(sender == stopButton, "rcvd stop action from unknown button")
 
 		recordingStatus.text = Strings.StatusTap
@@ -141,7 +140,7 @@ final internal class RecordSoundsViewController: UIViewController, AVAudioRecord
 
 	// MARK: - Navigation
 
-	override internal func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
 		if (segue.identifier == PlaySoundsViewController.UI.SegueID) {
 			let playSoundsVC = segue.destination as! PlaySoundsViewController
@@ -152,7 +151,7 @@ final internal class RecordSoundsViewController: UIViewController, AVAudioRecord
 
 	// MARK: - AVAudioRecorderDelegate
 
-	internal func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
+	func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
 
 		if flag {
 			recordedAudio = RecordedAudio(filePathUrl: recorder.url, title: recorder.url.lastPathComponent)

@@ -8,7 +8,7 @@
 
 import Foundation
 
-internal struct RecordedAudio {
+struct RecordedAudio {
 	var filePathUrl: URL!
 	var title: String!
 }
