@@ -20,12 +20,12 @@ final internal class PlaySoundsViewController: UIViewController {
 
 	// MARK: - Private Constants
 
-	private struct AlertTitle {
+	fileprivate struct AlertTitle {
 		static let UnableToInit  = "Unable to initialize for playback"
 		static let UnableToStart = "Unable to start playback"
 	}
 
-	private struct Effects {
+	fileprivate struct Effects {
 		// Pitch is measured in “cents”, a logarithmic value used for measuring musical intervals. 
 		// One octave = 1200 cents.
 		static let OneOctaveHigherPitch: Float = 1200.0
@@ -47,12 +47,12 @@ final internal class PlaySoundsViewController: UIViewController {
 
 	// MARK: - Private Stored Variables
 
-	private let audioEngine = AVAudioEngine()
-   private var audioFile: AVAudioFile?
+	fileprivate let audioEngine = AVAudioEngine()
+   fileprivate var audioFile: AVAudioFile?
 
 	// MARK: - Private Computed Variables
 
-	private var audioSession: AVAudioSession {
+	fileprivate var audioSession: AVAudioSession {
 		return AVAudioSession.sharedInstance()
 	}
 
@@ -66,7 +66,7 @@ final internal class PlaySoundsViewController: UIViewController {
 		super.viewDidLoad()
 
 		do {
-			audioFile = try AVAudioFile(forReading: receivedAudio!.filePathUrl)
+			audioFile = try AVAudioFile(forReading: receivedAudio!.filePathUrl as URL)
 			try audioSession.setCategory(AVAudioSessionCategoryPlayback)
 		} catch let error as NSError {
 			presentAlert(AlertTitle.UnableToInit, message: error.localizedDescription)
@@ -76,59 +76,59 @@ final internal class PlaySoundsViewController: UIViewController {
 
 	// MARK: - IB Actions
 
-	@IBAction internal func playChipmunkAudio(sender: UIButton) {
+	@IBAction internal func playChipmunkAudio(_ sender: UIButton) {
 		let pitchEffect = AVAudioUnitTimePitch()
 		pitchEffect.pitch = Effects.OneOctaveHigherPitch
 		playAudioWithEffect(pitchEffect)
 	}
 
-	@IBAction internal func playDarthVaderAudio(sender: UIButton) {
+	@IBAction internal func playDarthVaderAudio(_ sender: UIButton) {
 		let pitchEffect = AVAudioUnitTimePitch()
 		pitchEffect.pitch = Effects.OneOctaveLowerPitch
 		playAudioWithEffect(pitchEffect)
 	}
 
-	@IBAction internal func playEchoAudio(sender: UIButton) {
+	@IBAction internal func playEchoAudio(_ sender: UIButton) {
 		let echoEffect = AVAudioUnitDelay()
 		playAudioWithEffect(echoEffect)
 	}
 
-	@IBAction internal func playFastAudio(sender: UIButton) {
+	@IBAction internal func playFastAudio(_ sender: UIButton) {
 		let fastEffect = AVAudioUnitVarispeed()
 		fastEffect.rate = Effects.OneOctaveHigherRate
 		playAudioWithEffect(fastEffect)
 	}
 
-	@IBAction internal func playReverbAudio(sender: UIButton) {
+	@IBAction internal func playReverbAudio(_ sender: UIButton) {
 		let reverbEffect = AVAudioUnitReverb()
 		reverbEffect.wetDryMix = Effects.ReverbHalfWet
 		playAudioWithEffect(reverbEffect)
 	}
 
-	@IBAction internal func playSlowAudio(sender: UIButton) {
+	@IBAction internal func playSlowAudio(_ sender: UIButton) {
 		let slowEffect = AVAudioUnitVarispeed()
 		slowEffect.rate = Effects.OneOctaveLowerRate
 		playAudioWithEffect(slowEffect)
 	}
 
-	@IBAction internal func stopAudio(sender: UIButton) {
+	@IBAction internal func stopAudio(_ sender: UIButton) {
 		audioEngine.stop()
 	}
 
 	// MARK: - Private
 
-	private func playAudioWithEffect(effect: AVAudioUnit) {
+	fileprivate func playAudioWithEffect(_ effect: AVAudioUnit) {
 		audioEngine.stop()
 		audioEngine.reset()
 
 		let audioPlayerNode = AVAudioPlayerNode()
-		audioEngine.attachNode(audioPlayerNode)
-		audioEngine.attachNode(effect)
+		audioEngine.attach(audioPlayerNode)
+		audioEngine.attach(effect)
 
 		audioEngine.connect(audioPlayerNode, to: effect, format: nil)
 		audioEngine.connect(effect, to: audioEngine.outputNode, format: nil)
 
-		audioPlayerNode.scheduleFile(audioFile!, atTime: nil, completionHandler: nil)
+		audioPlayerNode.scheduleFile(audioFile!, at: nil, completionHandler: nil)
 
 		do {
 			try audioEngine.start()

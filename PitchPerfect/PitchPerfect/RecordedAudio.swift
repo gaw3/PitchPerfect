@@ -9,6 +9,6 @@
 import Foundation
 
 internal struct RecordedAudio {
-	var filePathUrl: NSURL!
+	var filePathUrl: URL!
 	var title: String!
 }

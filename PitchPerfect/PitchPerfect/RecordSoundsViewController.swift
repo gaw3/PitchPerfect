@@ -14,12 +14,12 @@ final internal class RecordSoundsViewController: UIViewController, AVAudioRecord
 
 	// MARK: - Private Constants
 
-	private struct AlertTitle {
+	fileprivate struct AlertTitle {
 		static let UnableToStart = "Unable to start recording"
 		static let UnableToStop  = "Unable to stop recording"
 	}
 
-	private struct Strings {
+	fileprivate struct Strings {
 		static let StatusPaused    = "Recording Paused..."
 		static let StatusRecording = "Recording..."
 		static let StatusTap       = "Tap to Record"
@@ -28,16 +28,16 @@ final internal class RecordSoundsViewController: UIViewController, AVAudioRecord
 
 	// MARK: - Private Stored Variables
 
-	private var audioRecorder: AVAudioRecorder?
-	private var recordedAudio: RecordedAudio?
+	fileprivate var audioRecorder: AVAudioRecorder?
+	fileprivate var recordedAudio: RecordedAudio?
 
 	// MARK: - Private Computed Variables
 
-	private var docsDir: String {
-		return NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
+	fileprivate var docsDir: String {
+		return NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
 	}
 
-	private var audioSession: AVAudioSession {
+	fileprivate var audioSession: AVAudioSession {
 		return AVAudioSession.sharedInstance()
 	}
 
@@ -55,68 +55,68 @@ final internal class RecordSoundsViewController: UIViewController, AVAudioRecord
 		super.viewDidLoad()
 	}
 
-	override internal func viewWillAppear(animated: Bool) {
+	override internal func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 
-		stopButton.hidden    = true
-		stopButton.enabled   = false
+		stopButton.isHidden    = true
+		stopButton.isEnabled   = false
 
-		pauseButton.hidden   = true
-		pauseButton.enabled  = false
+		pauseButton.isHidden   = true
+		pauseButton.isEnabled  = false
 
-		resumeButton.hidden  = true
-		resumeButton.enabled = false
+		resumeButton.isHidden  = true
+		resumeButton.isEnabled = false
 
-		recordButton.hidden  = false
-		recordButton.enabled = true
+		recordButton.isHidden  = false
+		recordButton.isEnabled = true
 
 		recordingStatus.text = Strings.StatusTap
 	}
 
 	// MARK: - IB Actions
 
-	@IBAction internal func pauseRecording(sender: UIButton) {
+	@IBAction internal func pauseRecording(_ sender: UIButton) {
 		assert(sender == pauseButton, "rcvd pause action from unknown button")
 
 		audioRecorder?.pause()
 		recordingStatus.text = Strings.StatusPaused
-		stopButton.enabled   = false
-		pauseButton.enabled  = false
-		resumeButton.enabled = true
+		stopButton.isEnabled   = false
+		pauseButton.isEnabled  = false
+		resumeButton.isEnabled = true
 	}
 
-	@IBAction internal func resumeRecording(sender: UIButton) {
+	@IBAction internal func resumeRecording(_ sender: UIButton) {
 		assert(sender == resumeButton, "rcvd resume action from unknown button")
 
 		audioRecorder?.record()
 		recordingStatus.text = Strings.StatusRecording
-		stopButton.enabled   = true
-		pauseButton.enabled  = true
-		resumeButton.enabled = false
+		stopButton.isEnabled   = true
+		pauseButton.isEnabled  = true
+		resumeButton.isEnabled = false
 	}
 
-	@IBAction internal func startRecording(sender: UIButton) {
+	@IBAction internal func startRecording(_ sender: UIButton) {
 		assert(sender == recordButton, "rcvd record action from unknown button")
 
 		recordingStatus.text = Strings.StatusRecording
-		recordButton.enabled = false
+		recordButton.isEnabled = false
 
-		stopButton.hidden    = false
-		stopButton.enabled   = true
+		stopButton.isHidden    = false
+		stopButton.isEnabled   = true
 
-		pauseButton.hidden   = false
-		pauseButton.enabled  = true
+		pauseButton.isHidden   = false
+		pauseButton.isEnabled  = true
 
-		resumeButton.hidden  = false
+		resumeButton.isHidden  = false
 
 		do {
 			try audioSession.setCategory(AVAudioSessionCategoryRecord)
+
+            let filePath = URL(fileURLWithPath: "\(docsDir)/\(Strings.FileName)")
 			
-			let filePath = NSURL.fileURLWithPathComponents([docsDir, Strings.FileName])
-			
-			audioRecorder = try AVAudioRecorder(URL: filePath!, settings: [:])
+			audioRecorder = try AVAudioRecorder(url: filePath, settings: [:])
 			audioRecorder?.delegate = self
-			audioRecorder?.meteringEnabled = true
+			audioRecorder?.isMeteringEnabled = true
 			audioRecorder?.prepareToRecord()
 			audioRecorder?.record()
 		} catch let error as NSError {
@@ -125,7 +125,7 @@ final internal class RecordSoundsViewController: UIViewController, AVAudioRecord
 
 	}
 
-	@IBAction internal func stopRecording(sender: UIButton) {
+	@IBAction internal func stopRecording(_ sender: UIButton) {
 		assert(sender == stopButton, "rcvd stop action from unknown button")
 
 		recordingStatus.text = Strings.StatusTap
@@ -141,10 +141,10 @@ final internal class RecordSoundsViewController: UIViewController, AVAudioRecord
 
 	// MARK: - Navigation
 
-	override internal func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+	override internal func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
 		if (segue.identifier == PlaySoundsViewController.UI.SegueID) {
-			let playSoundsVC = segue.destinationViewController as! PlaySoundsViewController
+			let playSoundsVC = segue.destination as! PlaySoundsViewController
 			playSoundsVC.receivedAudio = recordedAudio
 		}
 
@@ -152,14 +152,14 @@ final internal class RecordSoundsViewController: UIViewController, AVAudioRecord
 
 	// MARK: - AVAudioRecorderDelegate
 
-	internal func audioRecorderDidFinishRecording(recorder: AVAudioRecorder, successfully flag: Bool) {
+	internal func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
 
 		if flag {
-			recordedAudio = RecordedAudio(filePathUrl: recorder.url, title: recorder.url.lastPathComponent!)
-			performSegueWithIdentifier(PlaySoundsViewController.UI.SegueID, sender: nil)
+			recordedAudio = RecordedAudio(filePathUrl: recorder.url, title: recorder.url.lastPathComponent)
+			performSegue(withIdentifier: PlaySoundsViewController.UI.SegueID, sender: nil)
 		} else {
-			recordButton.enabled = true
-			stopButton.hidden = true
+			recordButton.isEnabled = true
+			stopButton.isHidden = true
 		}
 
 	}

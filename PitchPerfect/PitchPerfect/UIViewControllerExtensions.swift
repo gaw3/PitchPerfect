@@ -12,12 +12,12 @@ extension UIViewController {
 
 	// MARK: - API
 
-	func presentAlert(title: String, message: String) {
-		let alert  = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-		let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
+	func presentAlert(_ title: String, message: String) {
+		let alert  = UIAlertController(title: title, message: message, preferredStyle: .alert)
+		let action = UIAlertAction(title: "OK", style: .default, handler: nil)
 		alert.addAction(action)
 
-		self.presentViewController(alert, animated: true, completion: nil)
+		self.present(alert, animated: true, completion: nil)
 	}
 	
 }
