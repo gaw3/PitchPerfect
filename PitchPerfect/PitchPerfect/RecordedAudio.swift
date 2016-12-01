@@ -9,6 +9,6 @@
 import Foundation
 
 struct RecordedAudio {
-    var filePathUrl: URL!
+    var filePathURL: URL!
     var title:       String!
 }

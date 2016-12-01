@@ -1,30 +1,109 @@
-//
-//  PlaySoundsViewController.swift
-//  Pitch Perfect
-//
-//  Created by Gregory White on 9/2/15.
-//  Copyright (c) 2015-2016 Gregory White. All rights reserved.
-//
 
-import AVFoundation
-import UIKit
+ //
+ //  PlaySoundsViewController.swift
+ //  Pitch Perfect
+ //
+ //  Created by Gregory White on 9/2/15.
+ //  Copyright (c) 2015-2016 Gregory White. All rights reserved.
+ //
 
-final class PlaySoundsViewController: UIViewController {
+ import AVFoundation
+ import UIKit
 
-    // MARK: - Internal Constants
+ final class PlaySoundsViewController: UIViewController {
+
+    // MARK: --IB Outlets--
+
+    @IBOutlet weak var stopButton: UIButton!
+
+    // MARK: --IB Actions--
+
+    @IBAction func buttonWasTapped(_ button: UIButton) {
+        let playbackEffect = PlaybackEffect(rawValue: button.tag)!
+
+        switch playbackEffect {
+
+        case .slowSpeed, .fastSpeed:
+            let effect = AVAudioUnitVarispeed()
+            effect.rate = (playbackEffect == .slowSpeed ? AudioEffects.OneOctaveLowerRate : AudioEffects.OneOctaveHigherRate)
+            playAudioWithEffect(effect)
+
+        case .lowPitch, .highPitch:
+            let effect = AVAudioUnitTimePitch()
+            effect.pitch = (playbackEffect == .lowPitch ? AudioEffects.OneOctaveLowerPitch : AudioEffects.OneOctaveHigherPitch)
+            playAudioWithEffect(effect)
+
+        case .echo: playAudioWithEffect(AVAudioUnitDelay())
+
+        case .reverb:
+            let effect = AVAudioUnitReverb()
+            effect.wetDryMix = AudioEffects.ReverbHalfWet
+            playAudioWithEffect(effect)
+
+        case .stop: audioEngine.stop()
+
+        }
+
+    }
+
+    // MARK: --Constants--
 
     struct UI {
         static let SegueID = "SegueFromRecordToPlay"
     }
 
-    // MARK: - Private Constants
+    fileprivate let audioEngine = AVAudioEngine()
 
-    fileprivate struct AlertTitle {
+    // MARK: --Variables--
+
+    var receivedAudio:         RecordedAudio?
+    fileprivate var audioFile: AVAudioFile?
+ }
+
+
+
+ // MARK: - View Events
+
+ extension PlaySoundsViewController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        do {
+            audioFile = try AVAudioFile(forReading: receivedAudio!.filePathURL as URL)
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+        } catch let error as NSError {
+            presentAlert(AlertTitle.UnableToInit, message: error.localizedDescription)
+        }
+
+    }
+
+ }
+
+
+
+ // MARK: - Private Helpers
+
+ private extension PlaySoundsViewController {
+
+    // MARK: --Constants--
+
+    enum PlaybackEffect: Int {
+        case slowSpeed = 1
+        case fastSpeed = 2
+        case highPitch = 3
+        case lowPitch  = 4
+        case echo      = 5
+        case reverb    = 6
+        case stop      = 7
+    }
+
+    struct AlertTitle {
         static let UnableToInit  = "Unable to initialize for playback"
         static let UnableToStart = "Unable to start playback"
     }
 
-    fileprivate struct Effects {
+    struct AudioEffects {
         // Pitch is measured in “cents”, a logarithmic value used for measuring musical intervals.
         // One octave = 1200 cents.
         static let OneOctaveHigherPitch: Float = 1200.0
@@ -40,95 +119,21 @@ final class PlaySoundsViewController: UIViewController {
         static let ReverbHalfWet: Float = 50.0
     }
 
-    // MARK: - Internal Stored Variables
+    // MARK: --Methods--
 
-    var receivedAudio: RecordedAudio?
-
-    // MARK: - Private Stored Variables
-
-    fileprivate let audioEngine = AVAudioEngine()
-    fileprivate var audioFile: AVAudioFile?
-
-    // MARK: - Private Computed Variables
-
-    fileprivate var audioSession: AVAudioSession {
-        return AVAudioSession.sharedInstance()
-    }
-
-    // MARK: - IB Outlets
-
-    @IBOutlet weak var stopButton: UIButton!
-
-    // MARK: - View Events
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        do {
-            audioFile = try AVAudioFile(forReading: receivedAudio!.filePathUrl as URL)
-            try audioSession.setCategory(AVAudioSessionCategoryPlayback)
-        } catch let error as NSError {
-            presentAlert(AlertTitle.UnableToInit, message: error.localizedDescription)
-        }
-
-    }
-
-    // MARK: - IB Actions
-
-    @IBAction func playChipmunkAudio(_ sender: UIButton) {
-        let pitchEffect = AVAudioUn itTimePitch()
-        pitchEffect.pitch = Effects.OneOctaveHigherPitch
-        playAudioWithEffect(pitchEffect)
-    }
-
-    @IBAction func playDarthVaderAudio(_ sender: UIButton) {
-        let pitchEffect = AVAudioUnitTimePitch()
-        pitchEffect.pitch = Effects.OneOctaveLowerPitch
-        playAudioWithEffect(pitchEffect)
-    }
-
-    @IBAction func playEchoAudio(_ sender: UIButton) {
-        let echoEffect = AVAudioUnitDelay()
-        playAudioWithEffect(echoEffect)
-    }
-
-    @IBAction func playFastAudio(_ sender: UIButton) {
-        let fastEffect = AVAudioUnitVarispeed()
-        fastEffect.rate = Effects.OneOctaveHigherRate
-        playAudioWithEffect(fastEffect)
-    }
-
-    @IBAction func playReverbAudio(_ sender: UIButton) {
-        let reverbEffect = AVAudioUnitReverb()
-        reverbEffect.wetDryMix = Effects.ReverbHalfWet
-        playAudioWithEffect(reverbEffect)
-    }
-
-    @IBAction func playSlowAudio(_ sender: UIButton) {
-        let slowEffect = AVAudioUnitVarispeed()
-        slowEffect.rate = Effects.OneOctaveLowerRate
-        playAudioWithEffect(slowEffect)
-    }
-
-    @IBAction func stopAudio(_ sender: UIButton) {
-        audioEngine.stop()
-    }
-
-    // MARK: - Private
-
-    fileprivate func playAudioWithEffect(_ effect: AVAudioUnit) {
+    func playAudioWithEffect(_ effect: AVAudioUnit) {
         audioEngine.stop()
         audioEngine.reset()
 
         let audioPlayerNode = AVAudioPlayerNode()
         audioEngine.attach(audioPlayerNode)
         audioEngine.attach(effect)
-        
+
         audioEngine.connect(audioPlayerNode, to: effect, format: nil)
         audioEngine.connect(effect, to: audioEngine.outputNode, format: nil)
-        
+
         audioPlayerNode.scheduleFile(audioFile!, at: nil, completionHandler: nil)
-        
+
         do {
             try audioEngine.start()
             audioPlayerNode.play()
@@ -138,4 +143,4 @@ final class PlaySoundsViewController: UIViewController {
         
     }
     
-}
+ }

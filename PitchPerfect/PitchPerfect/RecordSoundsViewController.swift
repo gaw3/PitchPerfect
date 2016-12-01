@@ -154,7 +154,7 @@ final class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegat
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
         
         if flag {
-            recordedAudio = RecordedAudio(filePathUrl: recorder.url, title: recorder.url.lastPathComponent)
+            recordedAudio = RecordedAudio(filePathURL: recorder.url, title: recorder.url.lastPathComponent)
             performSegue(withIdentifier: PlaySoundsViewController.UI.SegueID, sender: nil)
         } else {
             recordButton.isEnabled = true
