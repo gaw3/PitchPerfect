@@ -29,7 +29,7 @@
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="startRecording:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="vh6-IW-xhC"/>
+                                    <action selector="buttonWasTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="9pE-ZF-PUQ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kxz-O1-HB1">
@@ -38,7 +38,7 @@
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="stopRecording:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="bKZ-Vu-OAv"/>
+                                    <action selector="buttonWasTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Egf-3j-93a"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to Record" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VL7-Le-rqK">
@@ -53,7 +53,7 @@
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="resumeRecording:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="So8-Qe-Qgc"/>
+                                    <action selector="buttonWasTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="KeL-0o-0J6"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uSs-GY-cqJ">
@@ -62,7 +62,7 @@
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="pauseRecording:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="K4y-dF-jio"/>
+                                    <action selector="buttonWasTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="P7E-Oq-P1I"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -127,11 +127,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="Record" id="ovt-iY-378"/>
                     <connections>
-                        <outlet property="pauseButton" destination="uSs-GY-cqJ" id="ezE-73-0cd"/>
-                        <outlet property="recordButton" destination="Ceb-SB-ds5" id="dmg-dk-FFm"/>
-                        <outlet property="recordingStatus" destination="VL7-Le-rqK" id="cQN-t1-LNM"/>
-                        <outlet property="resumeButton" destination="44s-Jg-9KU" id="LAa-Jp-RNO"/>
-                        <outlet property="stopButton" destination="Kxz-O1-HB1" id="1hl-4W-KFV"/>
+                        <outlet property="pauseButton" destination="uSs-GY-cqJ" id="HcM-df-Wyv"/>
+                        <outlet property="recordButton" destination="Ceb-SB-ds5" id="t45-Jo-xAm"/>
+                        <outlet property="recordingStatus" destination="VL7-Le-rqK" id="3WF-cp-NO6"/>
+                        <outlet property="resumeButton" destination="44s-Jg-9KU" id="TNs-2O-sEY"/>
+                        <outlet property="stopButton" destination="Kxz-O1-HB1" id="bID-qw-CAk"/>
                         <segue destination="lE3-fy-YLj" kind="show" identifier="SegueFromRecordToPlay" id="Vy7-LU-QvY"/>
                     </connections>
                 </viewController>
