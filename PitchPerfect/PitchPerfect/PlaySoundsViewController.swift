@@ -19,38 +19,27 @@
     // MARK: --IB Actions--
 
     @IBAction func buttonWasTapped(_ button: UIButton) {
-        let playbackEffect = PlaybackEffect(rawValue: button.tag)!
+        let playbackEffect = PlaybackEffect(rawValue: button.tag)
 
-        switch playbackEffect {
+        guard playbackEffect != nil else {
+            fatalError("Received action from unknown button = \(button)")
+        }
 
-        case .slowSpeed, .fastSpeed:
-            let effect = AVAudioUnitVarispeed()
-            effect.rate = (playbackEffect == .slowSpeed ? AudioEffects.OneOctaveLowerRate : AudioEffects.OneOctaveHigherRate)
-            playAudioWithEffect(effect)
+        switch playbackEffect! {
 
-        case .lowPitch, .highPitch:
-            let effect = AVAudioUnitTimePitch()
-            effect.pitch = (playbackEffect == .lowPitch ? AudioEffects.OneOctaveLowerPitch : AudioEffects.OneOctaveHigherPitch)
-            playAudioWithEffect(effect)
+        case .slowSpeed, .fastSpeed: playSpeedEffect(rate: playbackEffect == .slowSpeed ? AudioEffects.OneOctaveLowerRate : AudioEffects.OneOctaveHigherRate)
+        case .lowPitch, .highPitch:  playPitchEffect(pitch: playbackEffect == .lowPitch ? AudioEffects.OneOctaveLowerPitch : AudioEffects.OneOctaveHigherPitch)
 
-        case .echo: playAudioWithEffect(AVAudioUnitDelay())
-
-        case .reverb:
-            let effect = AVAudioUnitReverb()
-            effect.wetDryMix = AudioEffects.ReverbHalfWet
-            playAudioWithEffect(effect)
-
-        case .stop: audioEngine.stop()
+        case .echo:   playAudioWithEffect(AVAudioUnitDelay())
+        case .reverb: playReverbEffect(wetDryMix: AudioEffects.ReverbHalfWet)
+        case .stop:   audioEngine.stop()
 
         }
 
     }
 
+    // MARK: -
     // MARK: --Constants--
-
-    struct UI {
-        static let SegueID = "SegueFromRecordToPlay"
-    }
 
     fileprivate let audioEngine = AVAudioEngine()
 
@@ -58,13 +47,8 @@
 
     var receivedAudio:         RecordedAudio?
     fileprivate var audioFile: AVAudioFile?
- }
 
-
-
- // MARK: - View Events
-
- extension PlaySoundsViewController {
+    // MARK: --View Events--
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,14 +59,15 @@
         } catch let error as NSError {
             presentAlert(AlertTitle.UnableToInit, message: error.localizedDescription)
         }
-
+        
     }
 
- }
+}
 
 
 
- // MARK: - Private Helpers
+// MARK: -
+// MARK: - Private Helpers
 
  private extension PlaySoundsViewController {
 
@@ -106,17 +91,17 @@
     struct AudioEffects {
         // Pitch is measured in “cents”, a logarithmic value used for measuring musical intervals.
         // One octave = 1200 cents.
-        static let OneOctaveHigherPitch: Float = 1200.0
-        static let OneOctaveLowerPitch:  Float  = -1200.0
+        static let OneOctaveHigherPitch = Float(1200.0)
+        static let OneOctaveLowerPitch  = Float(-1200.0)
         // Doubling the rate raises the pitch one octave;  halving the rate lowers the pitch one octave.
-        static let OneOctaveHigherRate:  Float  = 2.0
-        static let OneOctaveLowerRate:   Float   = 0.5
+        static let OneOctaveHigherRate  = Float(2.0)
+        static let OneOctaveLowerRate   = Float(0.5)
         // Reverb Wet/Dry Mix is specified as the percentage of the output signal that is comprised of
         // the wet (reverb) signal (thus the remaining percentage of the output signal is comprised of
         // the dry (original) signal).
         // 0 = output signal comprised entirely of dry signal (no wet).
         // 100 = output signal comprised entirely of wet signal (all wet).
-        static let ReverbHalfWet: Float = 50.0
+        static let ReverbHalfWet = Float(50.0)
     }
 
     // MARK: --Methods--
@@ -143,4 +128,22 @@
         
     }
     
+    func playPitchEffect(pitch: Float) {
+        let effect = AVAudioUnitTimePitch()
+        effect.pitch = pitch
+        playAudioWithEffect(effect)
+    }
+
+    func playReverbEffect(wetDryMix: Float) {
+        let effect = AVAudioUnitReverb()
+        effect.wetDryMix = wetDryMix
+        playAudioWithEffect(effect)
+    }
+
+    func playSpeedEffect(rate: Float) {
+        let effect = AVAudioUnitVarispeed()
+        effect.rate = rate
+        playAudioWithEffect(effect)
+    }
+
  }

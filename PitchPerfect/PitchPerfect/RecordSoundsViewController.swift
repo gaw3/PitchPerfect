@@ -25,16 +25,18 @@ final class RecordSoundsViewController: UIViewController {
     @IBAction func buttonWasTapped(_ button: UIButton) {
 
         switch button {
+
         case recordButton: startRecording()
         case pauseButton:  pauseRecording()
         case resumeButton: resumeRecording()
         case stopButton:   stopRecording()
-        default:           fatalError("Received action from unknown button = \(button)")
+
+        default: fatalError("Received action from unknown button = \(button)")
         }
 
     }
 
-    // MARK:
+    // MARK: -
     // MARK: --Variables--
 
     fileprivate var audioRecorder: AVAudioRecorder?
@@ -63,14 +65,14 @@ final class RecordSoundsViewController: UIViewController {
 }
 
 
-
+// MARK: -
 // MARK: - Navigation
 
 extension RecordSoundsViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
-        if (segue.identifier == PlaySoundsViewController.UI.SegueID) {
+        if (segue.identifier == IB.SegueID.SegueFromRecordToPlay) {
             let playSoundsVC = segue.destination as! PlaySoundsViewController
             playSoundsVC.receivedAudio = recordedAudio
         }
@@ -81,7 +83,7 @@ extension RecordSoundsViewController {
 
 
 
-// MARK: - AV Audio Recorder Delegate
+// MARK: - Audio Recorder Delegate
 
 extension RecordSoundsViewController: AVAudioRecorderDelegate {
 
@@ -89,7 +91,7 @@ extension RecordSoundsViewController: AVAudioRecorderDelegate {
 
         if flag {
             recordedAudio = RecordedAudio(filePathURL: recorder.url, title: recorder.url.lastPathComponent)
-            performSegue(withIdentifier: PlaySoundsViewController.UI.SegueID, sender: nil)
+            performSegue(withIdentifier: IB.SegueID.SegueFromRecordToPlay, sender: nil)
         } else {
             recordButton.isEnabled = true
             stopButton.isHidden = true
