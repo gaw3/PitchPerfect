@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -92,14 +91,14 @@
                                 <exclude reference="2VZ-9V-C5y"/>
                                 <exclude reference="HkA-ET-viE"/>
                                 <exclude reference="Lfs-96-Y58"/>
+                                <exclude reference="WLx-2s-wZe"/>
+                                <exclude reference="eib-2Z-d4F"/>
                                 <exclude reference="Vs8-oz-vwS"/>
                                 <exclude reference="oHm-hz-uO5"/>
                                 <exclude reference="xZM-Jd-nVq"/>
-                                <exclude reference="WLx-2s-wZe"/>
-                                <exclude reference="eib-2Z-d4F"/>
-                                <exclude reference="E9Y-dm-UYV"/>
                                 <exclude reference="An8-mt-imU"/>
                                 <exclude reference="OUL-yI-Kcy"/>
+                                <exclude reference="E9Y-dm-UYV"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -114,14 +113,14 @@
                                 <include reference="2VZ-9V-C5y"/>
                                 <include reference="HkA-ET-viE"/>
                                 <include reference="Lfs-96-Y58"/>
+                                <include reference="WLx-2s-wZe"/>
+                                <include reference="eib-2Z-d4F"/>
                                 <include reference="Vs8-oz-vwS"/>
                                 <include reference="oHm-hz-uO5"/>
                                 <include reference="xZM-Jd-nVq"/>
-                                <include reference="WLx-2s-wZe"/>
-                                <include reference="eib-2Z-d4F"/>
-                                <include reference="E9Y-dm-UYV"/>
                                 <include reference="An8-mt-imU"/>
                                 <include reference="OUL-yI-Kcy"/>
+                                <include reference="E9Y-dm-UYV"/>
                             </mask>
                         </variation>
                     </view>
@@ -151,154 +150,103 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SXZ-DD-I8g" userLabel="Snail">
-                                <rect key="frame" x="46" y="114" width="100" height="100"/>
-                                <state key="normal" image="Slow Button">
-                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="buttonWasTapped:" destination="lE3-fy-YLj" eventType="touchUpInside" id="LZh-mv-NHO"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oI9-de-7OH" userLabel="Rabbit">
-                                <rect key="frame" x="229" y="114" width="100" height="100"/>
-                                <state key="normal" image="Fast Button">
-                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="buttonWasTapped:" destination="lE3-fy-YLj" eventType="touchUpInside" id="qlj-XG-Ipq"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sYy-YZ-cA9" userLabel="Stop">
-                                <rect key="frame" x="162.5" y="597" width="50" height="50"/>
-                                <state key="normal" image="Stop Button">
-                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="buttonWasTapped:" destination="lE3-fy-YLj" eventType="touchUpInside" id="shy-ec-4k3"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PmX-sX-L7l" userLabel="Squirrel">
-                                <rect key="frame" x="46" y="264" width="100" height="100"/>
-                                <state key="normal" image="Chipmunk Button">
-                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="buttonWasTapped:" destination="lE3-fy-YLj" eventType="touchUpInside" id="2p2-mE-o7a"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="flm-cw-gOx" userLabel="DarthVader">
-                                <rect key="frame" x="229" y="264" width="100" height="100"/>
-                                <state key="normal" image="Darth Vader Button">
-                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="buttonWasTapped:" destination="lE3-fy-YLj" eventType="touchUpInside" id="Oi5-ih-tUy"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g6Q-x0-sjU" userLabel="Hawk">
-                                <rect key="frame" x="46" y="414" width="100" height="100"/>
-                                <state key="normal" image="Echo Button">
-                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="buttonWasTapped:" destination="lE3-fy-YLj" eventType="touchUpInside" id="feD-9U-Umq"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VYO-tR-17L" userLabel="Reverb">
-                                <rect key="frame" x="229" y="414" width="100" height="100"/>
-                                <state key="normal" image="Reverb Button">
-                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="buttonWasTapped:" destination="lE3-fy-YLj" eventType="touchUpInside" id="a7S-0c-4av"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="52" translatesAutoresizingMaskIntoConstraints="NO" id="aUz-QB-jhu" userLabel="Play Effect Stack View">
+                                <rect key="frame" x="16" y="84" width="343" height="563"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="r64-Ai-6Lb" userLabel="Speed Stack View">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="102"/>
+                                        <subviews>
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SXZ-DD-I8g" userLabel="SnailButton">
+                                                <rect key="frame" x="0.0" y="0.0" width="171.5" height="102"/>
+                                                <state key="normal" image="SnailButton">
+                                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="buttonWasTapped:" destination="lE3-fy-YLj" eventType="touchUpInside" id="LZh-mv-NHO"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oI9-de-7OH" userLabel="RabbitButton">
+                                                <rect key="frame" x="171.5" y="0.0" width="171.5" height="102"/>
+                                                <state key="normal" image="RabbitButton">
+                                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="buttonWasTapped:" destination="lE3-fy-YLj" eventType="touchUpInside" id="qlj-XG-Ipq"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="vYH-Kt-7tV" userLabel="Pitch Stack View">
+                                        <rect key="frame" x="0.0" y="154" width="343" height="101.5"/>
+                                        <subviews>
+                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PmX-sX-L7l" userLabel="ChipmunkButton">
+                                                <rect key="frame" x="0.0" y="0.0" width="171.5" height="101.5"/>
+                                                <state key="normal" image="ChipmunkButton">
+                                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="buttonWasTapped:" destination="lE3-fy-YLj" eventType="touchUpInside" id="2p2-mE-o7a"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="flm-cw-gOx" userLabel="DarthVaderButton">
+                                                <rect key="frame" x="171.5" y="0.0" width="171.5" height="101.5"/>
+                                                <state key="normal" image="DarthVaderButton">
+                                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="buttonWasTapped:" destination="lE3-fy-YLj" eventType="touchUpInside" id="Oi5-ih-tUy"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="SrM-L5-0eW" userLabel="Other Effects Stack View">
+                                        <rect key="frame" x="0.0" y="307.5" width="343" height="102"/>
+                                        <subviews>
+                                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g6Q-x0-sjU" userLabel="EchoButton">
+                                                <rect key="frame" x="0.0" y="0.0" width="171.5" height="102"/>
+                                                <state key="normal" image="EchoButton">
+                                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="buttonWasTapped:" destination="lE3-fy-YLj" eventType="touchUpInside" id="feD-9U-Umq"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VYO-tR-17L" userLabel="ReverbButton">
+                                                <rect key="frame" x="171.5" y="0.0" width="171.5" height="102"/>
+                                                <state key="normal" image="ReverbButton">
+                                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="buttonWasTapped:" destination="lE3-fy-YLj" eventType="touchUpInside" id="a7S-0c-4av"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="rNo-rq-UQF" userLabel="Stop Stack View">
+                                        <rect key="frame" x="0.0" y="461.5" width="343" height="101.5"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3gd-ri-SjY">
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="101.5"/>
+                                                <state key="normal" image="Stop Button"/>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="oI9-de-7OH" secondAttribute="trailing" constant="30" id="50H-rs-EVL"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="flm-cw-gOx" secondAttribute="trailing" constant="30" id="BOU-77-UqV"/>
-                            <constraint firstItem="SXZ-DD-I8g" firstAttribute="top" secondItem="7Hf-s4-kly" secondAttribute="bottom" constant="50" id="EJE-YY-m4e"/>
-                            <constraint firstItem="UV8-sI-8FZ" firstAttribute="top" secondItem="sYy-YZ-cA9" secondAttribute="bottom" constant="20" id="IUo-GA-TxK"/>
-                            <constraint firstItem="g6Q-x0-sjU" firstAttribute="top" secondItem="PmX-sX-L7l" secondAttribute="bottom" constant="50" id="SIl-8Q-gRk"/>
-                            <constraint firstItem="SXZ-DD-I8g" firstAttribute="leading" secondItem="UxN-fi-bF7" secondAttribute="leadingMargin" constant="30" id="YYo-5P-Rod"/>
-                            <constraint firstAttribute="centerX" secondItem="sYy-YZ-cA9" secondAttribute="centerX" id="bBX-rf-e8J"/>
-                            <constraint firstItem="PmX-sX-L7l" firstAttribute="top" secondItem="SXZ-DD-I8g" secondAttribute="bottom" constant="50" id="bWq-bw-XYG">
-                                <variation key="widthClass=compact" constant="50"/>
-                            </constraint>
-                            <constraint firstItem="g6Q-x0-sjU" firstAttribute="leading" secondItem="UxN-fi-bF7" secondAttribute="leadingMargin" constant="30" id="dON-8G-lVJ"/>
-                            <constraint firstItem="flm-cw-gOx" firstAttribute="top" secondItem="oI9-de-7OH" secondAttribute="bottom" constant="50" id="dYq-Dd-zL2">
-                                <variation key="widthClass=compact" constant="50"/>
-                            </constraint>
-                            <constraint firstItem="VYO-tR-17L" firstAttribute="top" secondItem="flm-cw-gOx" secondAttribute="bottom" constant="50" id="iO2-sW-aPU"/>
-                            <constraint firstItem="PmX-sX-L7l" firstAttribute="leading" secondItem="UxN-fi-bF7" secondAttribute="leadingMargin" constant="30" id="s8N-vy-Jz9"/>
-                            <constraint firstItem="oI9-de-7OH" firstAttribute="top" secondItem="7Hf-s4-kly" secondAttribute="bottom" constant="50" id="yod-cu-sdO"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="VYO-tR-17L" secondAttribute="trailing" constant="30" id="ziP-h4-iCP"/>
+                            <constraint firstItem="UV8-sI-8FZ" firstAttribute="top" secondItem="aUz-QB-jhu" secondAttribute="bottom" constant="20" id="9JS-1r-WYx"/>
+                            <constraint firstItem="aUz-QB-jhu" firstAttribute="leading" secondItem="UxN-fi-bF7" secondAttribute="leadingMargin" id="eKL-Rb-0Ie"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="aUz-QB-jhu" secondAttribute="trailing" id="wsV-QK-1U8"/>
+                            <constraint firstItem="aUz-QB-jhu" firstAttribute="top" secondItem="7Hf-s4-kly" secondAttribute="bottom" constant="20" id="yg3-m3-l3T"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="SXZ-DD-I8g"/>
-                                <exclude reference="oI9-de-7OH"/>
-                                <exclude reference="sYy-YZ-cA9"/>
-                                <exclude reference="PmX-sX-L7l"/>
-                                <exclude reference="flm-cw-gOx"/>
-                                <exclude reference="g6Q-x0-sjU"/>
-                                <exclude reference="VYO-tR-17L"/>
-                            </mask>
-                            <mask key="constraints">
-                                <exclude reference="IUo-GA-TxK"/>
-                                <exclude reference="bWq-bw-XYG"/>
-                                <exclude reference="s8N-vy-Jz9"/>
-                                <exclude reference="EJE-YY-m4e"/>
-                                <exclude reference="YYo-5P-Rod"/>
-                                <exclude reference="iO2-sW-aPU"/>
-                                <exclude reference="ziP-h4-iCP"/>
-                                <exclude reference="BOU-77-UqV"/>
-                                <exclude reference="dYq-Dd-zL2"/>
-                                <exclude reference="SIl-8Q-gRk"/>
-                                <exclude reference="dON-8G-lVJ"/>
-                                <exclude reference="50H-rs-EVL"/>
-                                <exclude reference="yod-cu-sdO"/>
-                                <exclude reference="bBX-rf-e8J"/>
-                            </mask>
-                        </variation>
-                        <variation key="widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="SXZ-DD-I8g"/>
-                                <include reference="oI9-de-7OH"/>
-                                <include reference="sYy-YZ-cA9"/>
-                                <include reference="PmX-sX-L7l"/>
-                                <include reference="flm-cw-gOx"/>
-                                <include reference="g6Q-x0-sjU"/>
-                                <include reference="VYO-tR-17L"/>
-                            </mask>
-                            <mask key="constraints">
-                                <include reference="IUo-GA-TxK"/>
-                                <include reference="bWq-bw-XYG"/>
-                                <include reference="s8N-vy-Jz9"/>
-                                <include reference="EJE-YY-m4e"/>
-                                <include reference="YYo-5P-Rod"/>
-                                <include reference="iO2-sW-aPU"/>
-                                <include reference="ziP-h4-iCP"/>
-                                <include reference="BOU-77-UqV"/>
-                                <include reference="dYq-Dd-zL2"/>
-                                <include reference="SIl-8Q-gRk"/>
-                                <include reference="dON-8G-lVJ"/>
-                                <include reference="50H-rs-EVL"/>
-                                <include reference="yod-cu-sdO"/>
-                                <include reference="bBX-rf-e8J"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Play" id="8Wb-nu-Xkv"/>
-                    <connections>
-                        <outlet property="stopButton" destination="sYy-YZ-cA9" id="KtU-fn-t20"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oQk-mf-uFC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1332" y="341"/>
+            <point key="canvasLocation" x="1376" y="340"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="7KL-5g-CQv">
@@ -320,15 +268,15 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Chipmunk Button" width="100" height="100"/>
-        <image name="Darth Vader Button" width="100" height="100"/>
-        <image name="Echo Button" width="100" height="100"/>
-        <image name="Fast Button" width="100" height="100"/>
+        <image name="ChipmunkButton" width="90" height="90"/>
+        <image name="DarthVaderButton" width="90" height="90"/>
+        <image name="EchoButton" width="90" height="90"/>
         <image name="Microphone" width="100" height="100"/>
         <image name="Pause Button" width="50" height="50"/>
+        <image name="RabbitButton" width="90" height="90"/>
         <image name="Resume Button" width="50" height="50"/>
-        <image name="Reverb Button" width="100" height="100"/>
-        <image name="Slow Button" width="100" height="100"/>
+        <image name="ReverbButton" width="90" height="90"/>
+        <image name="SnailButton" width="90" height="90"/>
         <image name="Stop Button" width="50" height="50"/>
     </resources>
 </document>
