@@ -249,7 +249,10 @@
                     </view>
                     <navigationItem key="navigationItem" title="Play" id="8Wb-nu-Xkv"/>
                     <connections>
-                        <outlet property="playEffectStackView" destination="aUz-QB-jhu" id="2OZ-8R-QW3"/>
+                        <outlet property="effectsStackView" destination="JgF-Ux-WY3" id="4oD-Hc-pb9"/>
+                        <outlet property="otherStackView" destination="SrM-L5-0eW" id="mnz-KB-gvm"/>
+                        <outlet property="pitchStackView" destination="vYH-Kt-7tV" id="wUU-0a-Nou"/>
+                        <outlet property="speedStackView" destination="r64-Ai-6Lb" id="oB9-Tj-XQw"/>
                         <outlet property="stopButton" destination="3gd-ri-SjY" id="lNE-V3-s4o"/>
                     </connections>
                 </viewController>

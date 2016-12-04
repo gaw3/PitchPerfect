@@ -16,6 +16,11 @@
 
     @IBOutlet weak var stopButton: UIButton!
 
+    @IBOutlet weak var effectsStackView: UIStackView!
+    @IBOutlet weak var speedStackView: UIStackView!
+    @IBOutlet weak var pitchStackView: UIStackView!
+    @IBOutlet weak var otherStackView: UIStackView!
+
     // MARK: - IB Actions
 
     @IBAction func buttonWasTapped(_ button: UIButton) {
@@ -52,13 +57,21 @@
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        alignEffectButtons()
+        NotificationCenter.default.addObserver(self, selector: SEL.ProcessNotification, name: .UIDeviceOrientationDidChange, object: nil)
+
         do {
             audioFile = try AVAudioFile(forReading: receivedAudio!.filePathURL as URL)
             try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
         } catch let error as NSError {
             presentAlert(Alert.Title.UnableToInitPlayback, message: error.localizedDescription)
         }
-        
+
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: .UIDeviceOrientationDidChange, object: nil)
     }
 
 }
@@ -66,6 +79,25 @@
 
 
 // MARK: -
+// MARK: - Notifications
+
+extension PlaySoundsViewController {
+
+    func processNotification(_ notification: Notification) {
+
+        switch notification.name {
+
+        case Notification.Name.UIDeviceOrientationDidChange: alignEffectButtons()
+
+        default: fatalError("Received unknown notification = \(notification)")
+        }
+        
+    }
+    
+}
+
+
+
 // MARK: - Private Helpers
 
  private extension PlaySoundsViewController {
@@ -98,7 +130,27 @@
         static let ReverbHalfWet = Float(50.0)
     }
 
+    struct SEL {
+        static let ProcessNotification = #selector(processNotification(_:))
+    }
+
     // MARK: --Methods--
+
+    func alignEffectButtons() {
+
+        if UIDevice.current.orientation.isLandscape {
+            effectsStackView.axis = .horizontal
+            speedStackView.axis   = .vertical
+            pitchStackView.axis   = .vertical
+            otherStackView.axis   = .vertical
+        } else {
+            effectsStackView.axis = .vertical
+            speedStackView.axis   = .horizontal
+            pitchStackView.axis   = .horizontal
+            otherStackView.axis   = .horizontal
+        }
+
+    }
 
     func playAudioWithEffect(_ effect: AVAudioUnit) {
         audioEngine.stop()
