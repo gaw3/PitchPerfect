@@ -12,11 +12,11 @@
 
  final class PlaySoundsViewController: UIViewController {
 
-    // MARK: --IB Outlets--
+    // MARK: - IB Outlets
 
     @IBOutlet weak var stopButton: UIButton!
 
-    // MARK: --IB Actions--
+    // MARK: - IB Actions
 
     @IBAction func buttonWasTapped(_ button: UIButton) {
         let playbackEffect = PlaybackEffect(rawValue: button.tag)
@@ -38,17 +38,16 @@
 
     }
 
-    // MARK: -
-    // MARK: --Constants--
+    // MARK: - Constants
 
     fileprivate let audioEngine = AVAudioEngine()
 
-    // MARK: --Variables--
+    // MARK: - Variables
 
     var receivedAudio:         RecordedAudio?
     fileprivate var audioFile: AVAudioFile?
 
-    // MARK: --View Events--
+    // MARK: - View Events
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,7 +56,7 @@
             audioFile = try AVAudioFile(forReading: receivedAudio!.filePathURL as URL)
             try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
         } catch let error as NSError {
-            presentAlert(AlertTitle.UnableToInit, message: error.localizedDescription)
+            presentAlert(Alert.Title.UnableToInitPlayback, message: error.localizedDescription)
         }
         
     }
@@ -81,11 +80,6 @@
         case echo      = 5
         case reverb    = 6
         case stop      = 7
-    }
-
-    struct AlertTitle {
-        static let UnableToInit  = "Unable to initialize for playback"
-        static let UnableToStart = "Unable to start playback"
     }
 
     struct AudioEffects {
@@ -123,7 +117,7 @@
             try audioEngine.start()
             audioPlayerNode.play()
         } catch let error as NSError {
-            presentAlert(AlertTitle.UnableToStart, message: error.localizedDescription)
+            presentAlert(Alert.Title.UnableToStartPlayback, message: error.localizedDescription)
         }
         
     }

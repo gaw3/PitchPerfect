@@ -11,7 +11,7 @@ import UIKit
 
 final class RecordSoundsViewController: UIViewController {
 
-    // MARK: --IB Outlets--
+    // MARK: - IB Outlets
 
     @IBOutlet weak var pauseButton:  UIButton!
     @IBOutlet weak var recordButton: UIButton!
@@ -20,7 +20,7 @@ final class RecordSoundsViewController: UIViewController {
 
     @IBOutlet weak var recordingStatus: UILabel!
 
-    // MARK: --IB Actions--
+    // MARK: - IB Actions
 
     @IBAction func buttonWasTapped(_ button: UIButton) {
 
@@ -36,13 +36,12 @@ final class RecordSoundsViewController: UIViewController {
 
     }
 
-    // MARK: -
-    // MARK: --Variables--
+    // MARK: - Variables
 
     fileprivate var audioRecorder: AVAudioRecorder?
     fileprivate var recordedAudio: RecordedAudio?
 
-    // MARK: --View Events--
+    // MARK: - View Events
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -107,11 +106,6 @@ extension RecordSoundsViewController: AVAudioRecorderDelegate {
 
 private extension RecordSoundsViewController {
 
-    struct AlertTitle {
-        static let UnableToStart = "Unable to start recording"
-        static let UnableToStop  = "Unable to stop recording"
-    }
-
     struct Strings {
         static let StatusPaused    = "Recording Paused..."
         static let StatusRecording = "Recording..."
@@ -162,7 +156,7 @@ private extension RecordSoundsViewController {
             audioRecorder?.prepareToRecord()
             audioRecorder?.record()
         } catch let error as NSError {
-            presentAlert(AlertTitle.UnableToStart, message:  error.localizedDescription)
+            presentAlert(Alert.Title.UnableToStartRecording, message:  error.localizedDescription)
         }
 
     }
@@ -174,7 +168,7 @@ private extension RecordSoundsViewController {
         do {
             try AVAudioSession.sharedInstance().setActive(false)
         } catch let error as NSError {
-            presentAlert(AlertTitle.UnableToStop, message:  error.localizedDescription)
+            presentAlert(Alert.Title.UnableToStopRecording, message:  error.localizedDescription)
         }
         
     }
