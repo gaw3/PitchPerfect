@@ -17,9 +17,9 @@
     @IBOutlet weak var stopButton: UIButton!
 
     @IBOutlet weak var effectsStackView: UIStackView!
-    @IBOutlet weak var speedStackView: UIStackView!
-    @IBOutlet weak var pitchStackView: UIStackView!
-    @IBOutlet weak var otherStackView: UIStackView!
+    @IBOutlet weak var speedStackView:   UIStackView!
+    @IBOutlet weak var pitchStackView:   UIStackView!
+    @IBOutlet weak var otherStackView:   UIStackView!
 
     // MARK: - IB Actions
 
