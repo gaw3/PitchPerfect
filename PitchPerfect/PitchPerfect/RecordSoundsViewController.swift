@@ -146,11 +146,12 @@ private extension RecordSoundsViewController {
         resumeButton.isHidden  = false
 
         do {
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryRecord)
-
-            let filePath = URL(fileURLWithPath: "\(docsDir)/\(Strings.FileName)")
-
-            audioRecorder = try AVAudioRecorder(url: filePath, settings: [:])
+            let pathArray = [docsDir, "my_audio.wav"]
+            let filePath  = URL(string: pathArray.joined(separator: "/"))
+            
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayAndRecord, with: .defaultToSpeaker)
+            audioRecorder = try AVAudioRecorder(url: filePath!, settings: [:])
+            
             audioRecorder?.delegate = self
             audioRecorder?.isMeteringEnabled = true
             audioRecorder?.prepareToRecord()
