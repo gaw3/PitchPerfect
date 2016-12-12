@@ -230,9 +230,12 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="rNo-rq-UQF" userLabel="Stop Stack View">
                                         <rect key="frame" x="0.0" y="533.33333333333348" width="374" height="98.666666666666629"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3gd-ri-SjY">
+                                            <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3gd-ri-SjY">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="98.666666666666629"/>
                                                 <state key="normal" image="Stop Button"/>
+                                                <connections>
+                                                    <action selector="buttonWasTapped:" destination="lE3-fy-YLj" eventType="touchUpInside" id="5XB-xV-LoA"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -253,7 +256,6 @@
                         <outlet property="otherStackView" destination="SrM-L5-0eW" id="mnz-KB-gvm"/>
                         <outlet property="pitchStackView" destination="vYH-Kt-7tV" id="wUU-0a-Nou"/>
                         <outlet property="speedStackView" destination="r64-Ai-6Lb" id="oB9-Tj-XQw"/>
-                        <outlet property="stopButton" destination="3gd-ri-SjY" id="lNE-V3-s4o"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oQk-mf-uFC" userLabel="First Responder" sceneMemberID="firstResponder"/>
