@@ -11,6 +11,11 @@ import UIKit
 
 final class RecordSoundsViewController: UIViewController {
 
+    // MARK: - Variables
+    
+    fileprivate var audioRecorder: AVAudioRecorder?
+    fileprivate var recordedAudio: RecordedAudio?
+    
     // MARK: - IB Outlets
 
     @IBOutlet weak var pauseButton:  UIButton!
@@ -35,11 +40,6 @@ final class RecordSoundsViewController: UIViewController {
         }
 
     }
-
-    // MARK: - Variables
-
-    fileprivate var audioRecorder: AVAudioRecorder?
-    fileprivate var recordedAudio: RecordedAudio?
 
     // MARK: - View Events
 
@@ -82,6 +82,7 @@ extension RecordSoundsViewController {
 
 
 
+// MARK: -
 // MARK: - Audio Recorder Delegate
 
 extension RecordSoundsViewController: AVAudioRecorderDelegate {
@@ -102,6 +103,7 @@ extension RecordSoundsViewController: AVAudioRecorderDelegate {
 
 
 
+// MARK: -
 // MARK: - Private Helpers
 
 private extension RecordSoundsViewController {

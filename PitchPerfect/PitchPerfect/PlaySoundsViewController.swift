@@ -12,6 +12,15 @@
 
  final class PlaySoundsViewController: UIViewController {
 
+    // MARK: - Constants
+    
+    fileprivate let audioEngine = AVAudioEngine()
+    
+    // MARK: - Variables
+    
+    var receivedAudio:         RecordedAudio?
+    fileprivate var audioFile: AVAudioFile?
+    
     // MARK: - IB Outlets
 
     @IBOutlet weak var stopButton: UIButton!
@@ -32,25 +41,14 @@
 
         switch playbackEffect! {
 
-        case .slowSpeed, .fastSpeed: playSpeedEffect(rate: playbackEffect == .slowSpeed ? AudioEffects.OneOctaveLowerRate : AudioEffects.OneOctaveHigherRate)
-        case .lowPitch, .highPitch:  playPitchEffect(pitch: playbackEffect == .lowPitch ? AudioEffects.OneOctaveLowerPitch : AudioEffects.OneOctaveHigherPitch)
-
-        case .echo:   playAudioWithEffect(AVAudioUnitDelay())
-        case .reverb: playReverbEffect(wetDryMix: AudioEffects.ReverbHalfWet)
-        case .stop:   audioEngine.stop()
-
+        case .slowSpeed, .fastSpeed: playAudio(withSpeed: playbackEffect == .slowSpeed ? AudioEffects.OneOctaveLowerRate  : AudioEffects.OneOctaveHigherRate)
+        case .lowPitch,  .highPitch: playAudio(withPitch: playbackEffect == .lowPitch  ? AudioEffects.OneOctaveLowerPitch : AudioEffects.OneOctaveHigherPitch)
+        case .echo:                  playAudio(withEffect: AVAudioUnitDelay())
+        case .reverb:                playAudio(withReverbWetDryMix: AudioEffects.ReverbHalfWet)
+        case .stop:                  audioEngine.stop()
         }
 
     }
-
-    // MARK: - Constants
-
-    fileprivate let audioEngine = AVAudioEngine()
-
-    // MARK: - Variables
-
-    var receivedAudio:         RecordedAudio?
-    fileprivate var audioFile: AVAudioFile?
 
     // MARK: - View Events
 
@@ -58,7 +56,7 @@
         super.viewDidLoad()
 
         alignEffectButtons()
-        NotificationCenter.default.addObserver(self, selector: SEL.ProcessNotification, name: .UIDeviceOrientationDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: Selector.ProcessNotification, name: .UIDeviceOrientationDidChange, object: nil)
 
         do {
             audioFile = try AVAudioFile(forReading: receivedAudio!.filePathURL as URL)
@@ -98,11 +96,12 @@ extension PlaySoundsViewController {
 
 
 
+// MARK: -
 // MARK: - Private Helpers
 
  private extension PlaySoundsViewController {
 
-    // MARK: --Constants--
+    // MARK: - Constants
 
     enum PlaybackEffect: Int {
         case slowSpeed = 1
@@ -130,11 +129,11 @@ extension PlaySoundsViewController {
         static let ReverbHalfWet = Float(50.0)
     }
 
-    struct SEL {
+    struct Selector {
         static let ProcessNotification = #selector(processNotification(_:))
     }
 
-    // MARK: --Methods--
+    // MARK: - Methods
 
     func alignEffectButtons() {
 
@@ -152,7 +151,7 @@ extension PlaySoundsViewController {
 
     }
 
-    func playAudioWithEffect(_ effect: AVAudioUnit) {
+    func playAudio(withEffect effect: AVAudioUnit) {
         audioEngine.stop()
         audioEngine.reset()
 
@@ -174,22 +173,22 @@ extension PlaySoundsViewController {
         
     }
     
-    func playPitchEffect(pitch: Float) {
-        let effect = AVAudioUnitTimePitch()
-        effect.pitch = pitch
-        playAudioWithEffect(effect)
+    func playAudio(withPitch pitch: Float) {
+        let pitchAudioUnit = AVAudioUnitTimePitch()
+        pitchAudioUnit.pitch = pitch
+        playAudio(withEffect: pitchAudioUnit)
     }
 
-    func playReverbEffect(wetDryMix: Float) {
-        let effect = AVAudioUnitReverb()
-        effect.wetDryMix = wetDryMix
-        playAudioWithEffect(effect)
+    func playAudio(withReverbWetDryMix wetDryMix: Float) {
+        let reverbAudioUnit = AVAudioUnitReverb()
+        reverbAudioUnit.wetDryMix = wetDryMix
+        playAudio(withEffect: reverbAudioUnit)
     }
 
-    func playSpeedEffect(rate: Float) {
-        let effect = AVAudioUnitVarispeed()
-        effect.rate = rate
-        playAudioWithEffect(effect)
+    func playAudio(withSpeed speed: Float) {
+        let speedAudioUnit = AVAudioUnitVarispeed()
+        speedAudioUnit.rate = speed
+        playAudio(withEffect: speedAudioUnit)
     }
 
  }
