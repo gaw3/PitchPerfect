@@ -13,30 +13,27 @@ PitchPerfect is Portfolio Project #1 of the Udacity iOS Developer Nanodegree Pro
 * [Udacity Git Commit Message Style Guide][CommitMsgStyleGuide]  
 * [Udacity Project Review][ProjectReview]<br/><br/>
 
-|               | Current State          | Final iOS 9 Build   | Project Submission - ***Exceeds Expectations*** |
-| :----------   | :-----------------     | :-------------      | :-------------                                  |
-| GitHub Tag    | v2.2                   | v1.3                | no tag                                          |
-| App Version:  | 2.2                    | 1.3                 | 1.0                                             |
-| Environment:  | Xcode 8.2.1 / iOS 10.2 | Xcode 7.3 / iOS 9.3 | Xcode 7.0.1 / iOS 9.0                           |
-| Devices:      | iPhone Only            | iPhone Only         | iPhone Only                                     |
-| Orientations: | All except Upside Down | Portrait Only       | Portrait Only                                   |
+| [Change Log][ChangeLog] | Current State          | Final iOS 9 Build   | Project Submission - ***Exceeds Expectations*** |
+| :----------             | :-----------------     | :-------------      | :-------------                                  |
+| GitHub Tag              | v2.2.1                 | v1.3                | no tag                                          |
+| App Version:            | 2.2                    | 1.3                 | 1.0                                             |
+| Environment:            | Xcode 8.2.1 / iOS 10.2 | Xcode 7.3 / iOS 9.3 | Xcode 7.0.1 / iOS 9.0                           |
+| Devices:                | iPhone Only            | iPhone Only         | iPhone Only                                     |
+| Orientations:           | All except Upside Down | Portrait Only       | Portrait Only                                   |
 
 ## Design
 
 ### Record View
 
-TABLE 1 - Record View States
-
+###### TABLE 1 - Record View States
 | Tap to Record | Recording... | Recording Paused... |
 | :---:         | :---:        | :---:               |
 | ![][TRV]      | ![][RV]      | ![][RPV]            |
 
-TABLE 2 - Recording Control Buttons
-
+###### TABLE 2 - Recording Control Buttons
 | Resume            | Pause            | Stop            |
 | :---:             | :---:            | :---:           |
 | ![][ResumeButton] | ![][PauseButton] | ![][StopButton] |
-
 
 * The **Record View** is the initial view after app launch and looks like **Tap to Record**.<br/><br/>
 * Tap the active microphone icon to start recording:  
@@ -52,33 +49,14 @@ TABLE 2 - Recording Control Buttons
   - New audio will be appended to previously recorded audio
   - **Resume** button becomes inactive, **Pause/Stop** buttons become active.<br/><br/>
 
-### Implementation Note
-
-* Info.plist **MUST** contain the key/value pair for **Privacy - Microphone Usage Description** for the app to work properly on a device:
-  - If key/value pair is not present, the app will crash when the microphone button is tapped.
-  - However, in this case, the app will work as expected on the simulator.
-* Key/Value pair is ["NSMicrophoneUsageDescription", String];  string may be empty,  this implementation leaves it empty.
-* When the app is invoked for the first time after installation, and the microphone button is tapped, the following alert appears:
-
-Table 3 - Microphone Usage Request
-
-| Play          | 
-| :---:         |                      
-| ![][MicAlert] |
-
-* Tapping **OK** allows recording to occur, and subsequent taps of the microphone button starts recording straighaway, even during subsequent invocations of the app.
-* Tapping **Don't Allow** renders the app unusable;  it needs to be uninstalled/reinstalled to receive the alert again upon initial tap of the microphone button.
-
 ### Playback View
 
-TABLE 4 - Playback View
-
-| Play     | 
+###### TABLE 3 - Playback View
+|          | 
 | :---:    |                      
 | ![][PVC] |
 
-TABLE 4 - Playback Effects Buttons
-
+###### TABLE 4 - Playback Effect Buttons
 | Snail  | Rabbit | Chipmunk | Darth Vader | Hawk  | Reverb |
 | :---:  | :---:  | :---:    | :---:       | :---: | :---:  | 
 | ![][SnailButton] | ![][RabbitButton] | ![][ChipmunkButton] | ![][DarthVaderButton] | ![][HawkButton] | ![][ReverbButton] |
@@ -93,6 +71,10 @@ TABLE 4 - Playback Effects Buttons
 * During playback, tap an effect button to terminate the current playback, and restart playback with the new effect.
 * At any time, tap the **< Record** button (in the navigation bar) to terminate playback (if active) and return to the **Tap to Record** state of the **Record View**.
 
+### Notes
+
+* [Device Privacy][DevicePrivacy]
+
 ### iOS Frameworks
 
 * AVFoundation
@@ -105,9 +87,7 @@ TABLE 4 - Playback Effects Buttons
 * `Swift.gitignore`, the template used to create the local `.gitignore` file, lives in this [repo][GitIgnoreRepo].
 
 ---
-**Copyright © 2016 Gregory White. All rights reserved.**
-
-
+**Copyright © 2016-2017 Gregory White. All rights reserved.**
 
 
 
@@ -115,7 +95,6 @@ TABLE 4 - Playback Effects Buttons
 [ChipmunkButton]:       ./Paperwork/images/ChipmunkButton_90.png
 [DarthVaderButton]:     ./Paperwork/images/DarthVaderButton_90.png
 [HawkButton]:           ./Paperwork/images/HawkButton_90.png
-[MicAlert]:             ./Paperwork/images/MicrophoneUsageAlert.png
 [PauseButton]:          ./Paperwork/images/PauseButton_30.png
 [PVC]:                  ./Paperwork/images/PlayViewController.png
 [RabbitButton]:         ./Paperwork/images/RabbitButton_90.png
@@ -135,9 +114,9 @@ TABLE 4 - Playback Effects Buttons
 [SwiftStyleGuide]:      ./Paperwork/Udacity/GitHubSwiftStyleGuide.pdf  
 
 [ChangeLog]:            ./Paperwork/READMEFiles/ChangeLog.md
-
 [AVF]:                  ./Paperwork/READMEFiles/AVFoundation.md
 [FDTN]:                 ./Paperwork/READMEFiles/Foundation.md
+[DevicePrivacy]:        ./Paperwork/READMEFiles/Privacy.md
 [UK]:                   ./Paperwork/READMEFiles/UIKit.md 
 
 [Echo]:                 https://en.wikipedia.org/wiki/Echo
