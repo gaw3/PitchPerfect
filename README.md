@@ -13,11 +13,11 @@ PitchPerfect is Portfolio Project #1 of the Udacity iOS Developer Nanodegree Pro
 * [Udacity Git Commit Message Style Guide][CommitMsgStyleGuide]  
 * [Udacity Project Review][ProjectReview]<br/><br/>
 
-| [Change Log][ChangeLog] | Current State          | Final iOS 9 Build   | Project Submission - ***Exceeds Expectations*** |
+| [Change Log][ChangeLog] | Current iOS 10 Build   | Final iOS 9 Build   | Project Submission - ***Exceeds Expectations*** |
 | :----------             | :-----------------     | :-------------      | :-------------                                  |
-| GitHub Tag              | v2.2.1                 | v1.3                | no tag                                          |
-| App Version:            | 2.2                    | 1.3                 | 1.0                                             |
-| Environment:            | Xcode 8.2.1 / iOS 10.2 | Xcode 7.3 / iOS 9.3 | Xcode 7.0.1 / iOS 9.0                           |
+| GitHub Tag              | v2.3                   | v1.3                | no tag                                          |
+| App Version:            | 2.3                    | 1.3                 | 1.0                                             |
+| Environment:            | Xcode 8.3 / iOS 10.3   | Xcode 7.3 / iOS 9.3 | Xcode 7.0.1 / iOS 9.0                           |
 | Devices:                | iPhone Only            | iPhone Only         | iPhone Only                                     |
 | Orientations:           | All except Upside Down | Portrait Only       | Portrait Only                                   |
 

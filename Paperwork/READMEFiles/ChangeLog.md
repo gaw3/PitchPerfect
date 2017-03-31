@@ -1,11 +1,15 @@
 # ![][AppIcon]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Change Log
 
 
+### v2.3 - 03/2017
+* Update to Xcode 8.3 / iOS 10.3
+* Update README
+
 ### v2.2.1
 * Update README
 
 ### v2.2
-* Update to Xcode 8.2.1
+* Update to Xcode 8.2.1 
 * Update README
 
 ### v2.1
