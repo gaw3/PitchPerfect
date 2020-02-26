@@ -8,9 +8,9 @@
 
 import Foundation
 
-struct IB {
+enum IB {
 
-    struct SegueID {
+    enum SegueID {
         static let SegueFromRecordToPlay = "SegueFromRecordToPlay"
     }
 

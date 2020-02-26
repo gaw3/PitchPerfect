@@ -8,9 +8,9 @@
 
 import Foundation
 
-struct Alert {
+enum Alert {
 
-    struct Title {
+    enum Title {
         static let UnableToInitPlayback   = "Unable to initialize for playback"
         static let UnableToStartPlayback  = "Unable to start playback"
         static let UnableToStartRecording = "Unable to start recording"

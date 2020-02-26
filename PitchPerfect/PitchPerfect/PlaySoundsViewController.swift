@@ -14,12 +14,12 @@
 
     // MARK: - Constants
     
-    fileprivate let audioEngine = AVAudioEngine()
+    private let audioEngine = AVAudioEngine()
     
     // MARK: - Variables
     
-    var receivedAudio:         RecordedAudio?
-    fileprivate var audioFile: AVAudioFile?
+    var receivedAudio:     RecordedAudio?
+    private var audioFile: AVAudioFile?
     
     // MARK: - IB Outlets
 
@@ -56,11 +56,11 @@
         super.viewDidLoad()
 
         alignEffectButtons()
-        NotificationCenter.default.addObserver(self, selector: Selector.ProcessNotification, name: .UIDeviceOrientationDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: Selector.ProcessNotification, name: UIDevice.orientationDidChangeNotification, object: nil)
 
         do {
             audioFile = try AVAudioFile(forReading: receivedAudio!.filePathURL as URL)
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
         } catch let error as NSError {
             presentAlert(Alert.Title.UnableToInitPlayback, message: error.localizedDescription)
         }
@@ -69,7 +69,7 @@
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        NotificationCenter.default.removeObserver(self, name: .UIDeviceOrientationDidChange, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIDevice.orientationDidChangeNotification, object: nil)
     }
 
 }
@@ -81,11 +81,11 @@
 
 extension PlaySoundsViewController {
 
-    func processNotification(_ notification: Notification) {
+    @objc func processNotification(_ notification: Notification) {
 
         switch notification.name {
 
-        case Notification.Name.UIDeviceOrientationDidChange: alignEffectButtons()
+        case UIDevice.orientationDidChangeNotification: alignEffectButtons()
 
         default: fatalError("Received unknown notification = \(notification)")
         }

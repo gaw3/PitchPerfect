@@ -13,8 +13,8 @@ final class RecordSoundsViewController: UIViewController {
 
     // MARK: - Variables
     
-    fileprivate var audioRecorder: AVAudioRecorder?
-    fileprivate var recordedAudio: RecordedAudio?
+    private var audioRecorder: AVAudioRecorder?
+    private var recordedAudio: RecordedAudio?
     
     // MARK: - IB Outlets
 
@@ -58,7 +58,7 @@ final class RecordSoundsViewController: UIViewController {
         recordButton.isHidden  = false
         recordButton.isEnabled = true
 
-        recordingStatus.text = Strings.StatusTap
+        recordingStatus.text = Strings.statusTap
     }
 
 }
@@ -107,12 +107,12 @@ extension RecordSoundsViewController: AVAudioRecorderDelegate {
 // MARK: - Private Helpers
 
 private extension RecordSoundsViewController {
-
-    struct Strings {
-        static let StatusPaused    = "Recording Paused..."
-        static let StatusRecording = "Recording..."
-        static let StatusTap       = "Tap to Record"
-        static let FileName        = "my_audio.wav"
+    
+    enum Strings {
+        static let statusPaused    = "Recording Paused..."
+        static let statusRecording = "Recording..."
+        static let statusTap       = "Tap to Record"
+        static let fileName        = "my_audio.wav"
     }
 
     var docsDir: String {
@@ -121,7 +121,7 @@ private extension RecordSoundsViewController {
 
     func pauseRecording() {
         audioRecorder?.pause()
-        recordingStatus.text = Strings.StatusPaused
+        recordingStatus.text   = Strings.statusPaused
         stopButton.isEnabled   = false
         pauseButton.isEnabled  = false
         resumeButton.isEnabled = true
@@ -129,14 +129,14 @@ private extension RecordSoundsViewController {
 
     func resumeRecording() {
         audioRecorder?.record()
-        recordingStatus.text = Strings.StatusRecording
+        recordingStatus.text   = Strings.statusRecording
         stopButton.isEnabled   = true
         pauseButton.isEnabled  = true
         resumeButton.isEnabled = false
     }
 
     func startRecording() {
-        recordingStatus.text = Strings.StatusRecording
+        recordingStatus.text   = Strings.statusRecording
         recordButton.isEnabled = false
 
         stopButton.isHidden    = false
@@ -148,10 +148,11 @@ private extension RecordSoundsViewController {
         resumeButton.isHidden  = false
 
         do {
-            let pathArray = [docsDir, "my_audio.wav"]
+            let pathArray = [docsDir, Strings.fileName]
             let filePath  = URL(string: pathArray.joined(separator: "/"))
             
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayAndRecord, with: .defaultToSpeaker)
+            try AVAudioSession.sharedInstance().setCategory(.playAndRecord, options: .defaultToSpeaker)
+            
             audioRecorder = try AVAudioRecorder(url: filePath!, settings: [:])
             
             audioRecorder?.delegate = self
@@ -165,7 +166,7 @@ private extension RecordSoundsViewController {
     }
 
     func stopRecording() {
-        recordingStatus.text = Strings.StatusTap
+        recordingStatus.text = Strings.statusTap
         audioRecorder?.stop()
 
         do {
