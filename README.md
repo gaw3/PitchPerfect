@@ -5,7 +5,6 @@ PitchPerfect allows the user to record sound via the device microphone, and then
 ## Project
 
 PitchPerfect is Portfolio Project #1 of the Udacity iOS Developer Nanodegree Program.  The following list contains pertinent course documents:  
-
 * [Udacity App Specification][AppSpec]  
 * [Udacity Code Improvements][CodeImprovements]
 * [Udacity Grading Rubric][GradingRubric]  
