@@ -15,7 +15,7 @@
   - extensions handling delegate protocols
   - API creation
   - lowerCamelCase for enum elements
-  - indentation</br></br>
+  - indentation</br>
 * Enable privacy for device Microphone
 * Add landscape orientation utilizing UIStackView
 * Update images for the Recording Effect buttons
@@ -25,7 +25,7 @@
 * Update to iOS 9.3
 
 ### v1.1 
-* App presents alert controller to user appropriately<br/><br/>
+* App presents alert controller to user appropriately<br/>
 * Update to iOS 9.2 / Swift 2
 * Refactor the repository properly
 * Use Swift.gitignore as starting point for local .gitignore
