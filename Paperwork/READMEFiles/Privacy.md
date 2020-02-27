@@ -17,7 +17,7 @@ PitchPerfect is designed to utilize the device **Microphone**.
 * Tapping **Don't Allow** causes the app to hang or crash;  it needs to be uninstalled/reinstalled to work properly.
 
 ---
-**Copyright © 2016-2017 Gregory White. All rights reserved.**
+**Copyright © 2016-2020 Gregory White. All rights reserved.**
 
 
 
