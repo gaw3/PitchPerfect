@@ -1,6 +1,6 @@
 # ![][AppIcon]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Change Log
 
-###v3.1
+### v3.1
 * Update to iOS 13.4
 
 ### v3.0
