@@ -1,9 +1,12 @@
 # ![][AppIcon]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Change Log
 
-### v3.0 - 02/2020
+###v3.1
+* Update to iOS 13.4
+
+### v3.0
 * Update to iOS 13 / Swift 5
 
-### v2.3 - 03/2017
+### v2.3
 * Update to iOS 10.3
 
 ### v2.1

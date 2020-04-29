@@ -14,9 +14,9 @@ PitchPerfect is Portfolio Project #1 of the Udacity iOS Developer Nanodegree Pro
 
 | [Change Log][ChangeLog] | Current Build          | Project Submission - ***Exceeds Expectations*** |
 | :----------             | :-----------------     | :-------------                                  |
-| GitHub Tag              | v3.0                   | no tag                                          |
-| App Version:            | 3.0                    | 1.0                                             |
-| Environment:            | iOS 13 / Swift 5       | iOS 9.0 / Swift 2                               |
+| GitHub Tag              | v3.1                   | no tag                                          |
+| App Version:            | 3.1                    | 1.0                                             |
+| Environment:            | iOS 13.4 / Swift 5     | iOS 9.0 / Swift 2                               |
 | Devices:                | iPhone Only            | iPhone Only                                     |
 | Orientations:           | All except Upside Down | Portrait Only                                   |
 
